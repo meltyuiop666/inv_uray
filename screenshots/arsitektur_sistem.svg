@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 750" width="100%" height="100%">
+  <!-- Definitions for shadows and markers -->
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#94a3b8" flood-opacity="0.3"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#475569" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <!-- Grid/Guidelines (Optional, commented out) -->
+  <!-- <path d="M 375 0 L 375 750 M 0 375 L 750 375" stroke="#f1f5f9" stroke-width="1" /> -->
+
+  <!-- ================= ACTOR SECTION ================= -->
+  <!-- Actor: Admin / Pemilik -->
+  <g id="actor-admin" transform="translate(375, 75)">
+    <!-- Body -->
+    <path d="M -25 35 C -25 15, -15 10, 0 10 C 15 10, 25 15, 25 35 Z" fill="#3b82f6" />
+    <!-- Head -->
+    <circle cx="0" cy="-2" r="14" fill="#fed7aa" />
+    <!-- Hair -->
+    <path d="M -13 -6 C -12 -14, 12 -14, 13 -6 C 13 -13, -7 -15, -13 -6 Z" fill="#1e293b" />
+    <!-- Text Label -->
+    <text x="0" y="55" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">Admin / Pemilik</text>
+  </g>
+
+  <!-- ================= BLOCKS SECTION ================= -->
+
+  <!-- 1. Website Box (Yellow/Rose theme) -->
+  <!-- Target X: 375, Y: 220 -->
+  <g id="block-web" transform="translate(195, 170)" filter="url(#shadow)">
+    <rect width="360" height="90" rx="12" fill="#fef08a" stroke="#eab308" stroke-width="2" />
+    <text x="180" y="38" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" fill="#1e293b" text-anchor="middle">Website Sistem Informasi Persediaan</text>
+    <text x="180" y="58" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" fill="#e11d48" text-anchor="middle">UMKM Lookatstore.id</text>
+    <text x="180" y="78" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">(Django Frontend &amp; Backend + HTMX)</text>
+  </g>
+
+  <!-- 2. URL & View Box (Blue theme) -->
+  <!-- Target X: 375, Y: 380 -->
+  <g id="block-mvt" transform="translate(235, 330)" filter="url(#shadow)">
+    <rect width="280" height="85" rx="12" fill="#38bdf8" stroke="#0284c7" stroke-width="2" />
+    <text x="140" y="38" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">URL &amp; View</text>
+    <text x="140" y="62" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#e0f2fe" text-anchor="middle">(Django MVT + HTMX)</text>
+  </g>
+
+  <!-- 3. Auth System Box (Green theme) -->
+  <!-- Target X: 610, Y: 380 -->
+  <g id="block-auth" transform="translate(560, 330)" filter="url(#shadow)">
+    <rect width="160" height="85" rx="12" fill="#4ade80" stroke="#16a34a" stroke-width="2" />
+    <text x="80" y="38" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" fill="#1e293b" text-anchor="middle">Auth System</text>
+    <text x="80" y="62" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#14532d" text-anchor="middle">(Django Auth)</text>
+  </g>
+
+  <!-- 4. Database Logic Box (Beige/Orange theme) -->
+  <!-- Target X: 240, Y: 560 -->
+  <g id="block-orm" transform="translate(85, 510)" filter="url(#shadow)">
+    <rect width="280" height="85" rx="12" fill="#ffedd5" stroke="#f97316" stroke-width="2" />
+    <text x="140" y="38" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" fill="#7c2d12" text-anchor="middle">Database Logic</text>
+    <text x="140" y="62" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#7c2d12" text-anchor="middle">(Django ORM)</text>
+  </g>
+
+  <!-- 5. Database Cylinder (Yellowish cylinder theme) -->
+  <!-- Target X: 540, Y: 560 -->
+  <g id="block-db" transform="translate(500, 500)" filter="url(#shadow)">
+    <!-- Cylinder body -->
+    <path d="M 0 20 L 0 80 A 50 15 0 0 0 100 80 L 100 20 Z" fill="#fde047" stroke="#ca8a04" stroke-width="2" />
+    <!-- Cylinder top -->
+    <ellipse cx="50" cy="20" rx="50" ry="15" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
+    <!-- Text Labels -->
+    <text x="50" y="55" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" fill="#854d0e" text-anchor="middle">Database</text>
+    <text x="50" y="75" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#854d0e" font-weight="bold" text-anchor="middle">(PostgreSQL)</text>
+  </g>
+
+
+  <!-- ================= ARROWS & CONNECTORS ================= -->
+
+  <!-- Admin/Pemilik -> Web Box -->
+  <path d="M 375 145 L 375 162" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- Admin/Pemilik -> ORM Box (Kelola Langsung / Django Admin Panel) -->
+  <path d="M 330 110 L 110 110 L 110 510" fill="none" stroke="#475569" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrow)" />
+  <text x="120" y="102" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#475569">Kelola Langsung (Django Admin Panel)</text>
+
+  <!-- Web Box -> URL & View (Route) -->
+  <path d="M 375 260 L 375 322" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="385" y="295" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#475569">Route</text>
+
+  <!-- URL & View -> Auth System (Call) -->
+  <path d="M 515 372.5 L 552 372.5" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="533.5" y="362" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#475569" text-anchor="middle">Call</text>
+
+  <!-- Auth System -> Web Box (Response) -->
+  <path d="M 640 330 L 640 215 L 563 215" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="648" y="275" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#475569" text-anchor="start">Response</text>
+
+  <!-- URL & View -> Database Logic (Resource) -->
+  <path d="M 315 415 L 315 480 C 315 500, 225 500, 225 502" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="325" y="455" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#475569">Resource</text>
+
+  <!-- Auth System -> Database (Verify credentials) -->
+  <path d="M 640 415 L 640 500" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="3,3" />
+
+  <!-- Database Logic -> Database (Fetch/Store Data) -->
+  <path d="M 365 552.5 L 492 552.5" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="428.5" y="542" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#475569" text-anchor="middle">Fetch/Store Data</text>
+
+</svg>

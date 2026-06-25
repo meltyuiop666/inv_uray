@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% block title %}Laporan Barang Keluar - Lookatstore.id Inventory{% endblock %}
+{% block header_title %}Laporan Barang Keluar{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- Filter Card (no-print) -->
+    <div class="no-print bg-white border border-slate-100 rounded-3xl p-6 shadow-sm">
+        <form method="get" class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Start Date -->
+                <div>
+                    <label for="start_date" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Tanggal Awal</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                            <i data-lucide="calendar" class="w-4 h-4"></i>
+                        </span>
+                        <input type="date" name="start_date" id="start_date" value="{{ start_date }}" required
+                               class="block w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:bg-white focus:border-brand-500 focus:ring-4 focus:ring-brand-100 transition-all text-sm">
+                    </div>
+                </div>
+
+                <!-- End Date -->
+                <div>
+                    <label for="end_date" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Tanggal Akhir</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                            <i data-lucide="calendar" class="w-4 h-4"></i>
+                        </span>
+                        <input type="date" name="end_date" id="end_date" value="{{ end_date }}" required
+                               class="block w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:bg-white focus:border-brand-500 focus:ring-4 focus:ring-brand-100 transition-all text-sm">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex flex-wrap gap-2">
+                <button type="submit" class="px-4 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm rounded-xl transition-all cursor-pointer flex items-center">
+                    <i data-lucide="filter" class="w-4 h-4 mr-2"></i>
+                    Filter Laporan
+                </button>
+                <a href="{% url 'reports:export_keluar_excel' %}?start_date={{ start_date }}&end_date={{ end_date }}" class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm rounded-xl transition-all cursor-pointer flex items-center">
+                    <i data-lucide="file-spreadsheet" class="w-4 h-4 mr-2"></i>
+                    Ekspor Excel
+                </a>
+                <a href="{% url 'reports:export_keluar_pdf' %}?start_date={{ start_date }}&end_date={{ end_date }}" class="px-4 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-semibold text-sm rounded-xl transition-all cursor-pointer flex items-center">
+                    <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
+                    Ekspor PDF
+                </a>
+                <button type="button" onclick="window.print()" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm rounded-xl transition-all cursor-pointer flex items-center">
+                    <i data-lucide="printer" class="w-4 h-4 mr-2"></i>
+                    Cetak
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Printable Report Card -->
+    <div class="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm print:shadow-none print:border-none print:p-0">
+        
+        <!-- Header Laporan (Hanya tampil cetak/penuh) -->
+        <div class="text-center pb-8 border-b-2 border-slate-200 mb-6">
+            <h2 class="font-display font-bold text-2xl text-slate-900 tracking-tight">LAPORAN TRANSAKSI BARANG KELUAR</h2>
+            <p class="font-display font-semibold text-md text-brand-600 mt-1">UMKM Lookatstore.id Mempawah</p>
+            <div class="mt-4 flex flex-col sm:flex-row justify-center sm:space-x-8 text-xs text-slate-500">
+                <p><strong>Periode:</strong> {{ start_date }} s.d. {{ end_date }}</p>
+                <p class="hidden print:block"><strong>Tanggal Cetak:</strong> {{ print_date|date:"d F Y" }}</p>
+                <p class="hidden print:block"><strong>Petugas:</strong> {{ request.user.username }}</p>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm print:text-xs">
+                <thead class="bg-slate-50 border-b border-slate-150">
+                    <tr>
+                        <th class="px-4 py-3 text-slate-500 font-bold uppercase tracking-wider">No</th>
+                        <th class="px-4 py-3 text-slate-500 font-bold uppercase tracking-wider">Tanggal</th>
+                        <th class="px-4 py-3 text-slate-500 font-bold uppercase tracking-wider">Kode Barang</th>
+                        <th class="px-4 py-3 text-slate-500 font-bold uppercase tracking-wider">Nama Produk</th>
+                        <th class="px-4 py-3 text-slate-500 font-bold uppercase tracking-wider">Alasan Keluar</th>
+                        <th class="px-4 py-3 text-right text-slate-500 font-bold uppercase tracking-wider">Jumlah</th>
+                        <th class="px-4 py-3 text-slate-500 font-bold uppercase tracking-wider">Satuan</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                    {% for item in items %}
+                    <tr>
+                        <td class="px-4 py-3 text-slate-500 font-medium">{{ forloop.counter }}</td>
+                        <td class="px-4 py-3 font-medium text-slate-900">{{ item.tanggal|date:"d M Y" }}</td>
+                        <td class="px-4 py-3 font-mono font-medium text-slate-600">{{ item.barang.kode_barang }}</td>
+                        <td class="px-4 py-3 font-semibold text-slate-900">{{ item.barang.nama_produk }}</td>
+                        <td class="px-4 py-3 text-slate-600">
+                            <span class="px-2.5 py-1 text-xs rounded-full font-medium {% if item.keterangan == 'Penjualan' %}bg-rose-50 text-rose-600{% else %}bg-slate-100 text-slate-600{% endif %} print:p-0 print:bg-transparent print:text-slate-800">
+                                {{ item.keterangan }}
+                            </span>
+                        </td>
+                        <td class="px-4 py-3 text-right font-bold text-slate-900">{{ item.jumlah }}</td>
+                        <td class="px-4 py-3 text-slate-500 font-medium">{{ item.barang.satuan }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" class="px-4 py-8 text-center text-slate-400">
+                            Tidak ada transaksi barang keluar pada periode ini.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <!-- Total Row -->
+                    {% if items %}
+                    <tr class="bg-slate-50 font-bold border-t-2 border-slate-200">
+                        <td colspan="5" class="px-4 py-3.5 text-right text-slate-900 uppercase tracking-wider">Total Barang Keluar</td>
+                        <td class="px-4 py-3.5 text-right text-brand-600 text-base">{{ total_qty }}</td>
+                        <td class="px-4 py-3.5 text-slate-500">pcs</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Signature Section (Hanya tampil di print) -->
+        <div class="hidden print:grid grid-cols-2 gap-8 mt-16 text-xs text-center">
+            <div></div>
+            <div>
+                <p>Mempawah, {{ print_date|date:"d F Y" }}</p>
+                <p class="mt-1 font-semibold">Pemilik UMKM Lookatstore.id</p>
+                <div class="h-24"></div>
+                <p class="font-bold border-b border-slate-300 inline-block px-8">( Uray Rizky Juniar )</p>
+                <p class="text-slate-400 mt-1">Admin Sistem</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

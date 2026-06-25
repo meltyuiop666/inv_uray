@@ -1,0 +1,646 @@
+PERANCANGAN SISTEM INFORMASI PERSEDIAAN
+BARANG PADA UMKM LOOKATSTORE.ID
+MEMPAWAH
+
+SKRIPSI
+Disusun Untuk Memenuhi Salah Satu Syarat
+Memperoleh Gelar Sarjana Komputer
+
+Oleh
+URAY RIZKY JUNIAR
+221103859
+
+
+
+
+PROGRAM STUDI SISTEM INFORMASI
+PEMINATAN ENTERPRISE INFORMATION SYSTEM
+
+
+
+SEKOLAH TINGGI MANAJEMEN INFORMATIKA DAN KOMPUTER PONTIANAK
+P O N T I A N A K
+2026
+BAB 1
+PENDAHULUAN
+
+Latar Belakang
+Sistem informasi merupakan sebuah kesatuan yang melibatkan manusia, teknologi, serta prosedur yang saling terintegrasi untuk mengelola data dan menghasilkan informasi yang relevan bagi pengguna dalam mendukung tujuan organisasi (Hardi, 2022). Keberadaan sistem informasi terbukti mampu membantu perusahaan dalam mengoptimalkan proses bisnis, mempercepat pengambilan keputusan, serta meningkatkan akurasi dan efisiensi kerja (Julius, 2024). Data yang diolah melalui sistem informasi tersimpan dalam basis data, sehingga dapat diakses kembali sesuai kebutuhan. Seiring dengan meningkatnya kompleksitas proses bisnis, volume data yang harus dikelola pun semakin besar. Teknologi menjadi sarana penting untuk mengolah data tersebut agar dapat disajikan secara cepat dan efisien.
+Perkembangan teknologi informasi dan digitalisasi telah mendorong transformasi dalam berbagai sektor bisnis (Kosasi, 2024). Perusahaan dituntut untuk beradaptasi agar tetap kompetitif dan mampu memenuhi kebutuhan konsumen yang semakin tinggi. Akses informasi yang cepat menjadikan penerapan sistem informasi bukan lagi sekadar pilihan, melainkan kebutuhan strategis untuk meningkatkan efisiensi operasional, produktivitas, serta kualitas pelayanan. Integrasi sistem digital memungkinkan otomatisasi pencatatan, pengelolaan data yang lebih akurat, serta penyajian laporan yang mendukung pengambilan keputusan bisnis (Julius, 2024).
+Tidak hanya industri besar, bisnis ritel seperti bisnis fashion juga ikut terdampak arus digitalisasi. Di Indonesia, perkembangan bisnis pakaian wanita menunjukkan tren positif karena tingginya minat masyarakat terhadap produk busana seperti dress, oneset, hijab, maupun perlengkapan hijab. Hal ini menciptakan peluang besar bagi UMKM ritel, tetapi sekaligus menimbulkan tantangan dalam pengelolaan persediaan. UMKM perlu memastikan ketersediaan barang agar dapat memenuhi permintaan pelanggan tanpa menimbulkan risiko kekurangan ataupun kelebihan persediaan.
+Lookatstore.id Mempawah merupakan UMKM yang bergerak di bidang penjualan pakaian wanita, seperti dress, oneset, hijab, serta berbagai perlengkapan hijab. Meskipun memiliki variasi produk yang cukup beragam, pengelolaan persediaan barang di UMKM ini masih dilakukan secara sederhana dan belum terintegrasi dalam suatu sistem informasi. Pencatatan persediaan barang masih mengandalkan catatan pribadi, sehingga berpotensi menimbulkan kesalahan dalam mencatat penerimaan barang, transaksi penjualan, maupun retur barang. Kondisi tersebut menyebabkan data persediaan sering kali tidak akurat dan sulit dipantau secara langsung. Selain itu, proses pencarian data persediaan membutuhkan waktu yang relatif lama, yang berdampak pada terhambatnya proses operasional serta menyulitkan pemilik UMKM dalam melakukan analisis dan pengambilan keputusan terkait pengelolaan persediaan.
+Permasalahan tersebut berdampak pada risiko ketidaksesuaian antara data yang tercatat dengan kondisi nyata di gudang. Proses pembuatan laporan persediaan pun sering memakan waktu karena harus dilakukan secara individual untuk setiap item. Kondisi ini mengurangi efisiensi kerja dan menyulitkan pemantauan ketersediaan barang secara langsung.
+Berdasarkan permasalahan yang ada, diperlukan suatu sistem informasi persediaan barang yang terkomputerisasi agar proses pencatatan menjadi lebih akurat, efisien, dan terintegrasi. Dengan adanya sistem informasi, pemilik UMKM dapat melakukan pemantauan persediaan secara langsung, menyederhanakan proses pembuatan laporan, serta mendukung pemilik dalam mengambil keputusan terkait pemesanan produk. Sistem yang dikembangkan diharapkan mampu meningkatkan kinerja operasional Lookatstore.id, meminimalkan risiko kesalahan, dan memperkuat daya saing usaha di tengah persaingan bisnis fashion yang semakin ketat.
+Penelitian mengenai sistem informasi persediaan telah banyak dilakukan sebelumnya. Misalnya, Adam (2024) merancang sistem informasi berbasis web untuk mendukung analisis bisnis pada bisnis ritel, yang terbukti mampu membantu proses pengelolaan persediaan dan penyajian laporan secara lebih terstruktur. Penelitian lain oleh Anugrah dan Saputra (2024) mengenai perancangan sistem inventory berbasis web di PT Bumi Daya Plaza menunjukkan hasil yang signifikan dalam meningkatkan akurasi pencatatan serta efektivitas manajemen persediaan barang. Sementara itu, Rura dan Ardiansyah (2024) dalam penelitiannya tentang rancang bangun sistem informasi inventory barang berbasis web pada Toko Dina Beauty Care berhasil menghasilkan sistem yang lebih terintegrasi, mempermudah monitoring barang, serta mendukung proses pengambilan keputusan.
+Berdasarkan penelitian terdahulu tersebut, dapat disimpulkan bahwa sistem informasi persediaan mampu meningkatkan efektivitas dan efisiensi dalam pengelolaan persediaan barang pada berbagai jenis usaha. Oleh karena itu, penelitian ini difokuskan pada perancangan Sistem Informasi Manejemen Persediaan Barang pada UMKM Lookatstore.id Mempawah, dengan tujuan menyediakan pencatatan persediaan yang lebih akurat, mendukung pengambilan keputusan pemesanan produk, serta meningkatkan kinerja operasional UMKM secara keseluruhan.
+
+Permasalahan
+Berdasarkan uraian pada latar belakang yang telah dijelaskan sebelumnya, maka dapat diidentifikasi masalah yang dihadapi yaitu “Bagaimana menghasilkan sistem informasi persediaan barang yang dapat membantu proses pencatatan dan pengelolaan persediaan secara terkomputerisasi pada Lookatstore.id Mempawah?”
+
+Pembatasan Masalah
+Sebagai upaya menjaga penelitian ini tetap terarah dan tidak melebar ke aspek yang terlalu kompleks, ruang lingkup penelitian dibatasi pada perancangan sistem informasi yang difokuskan pada pengelolaan persediaan barang untuk mendukung kegiatan operasional harian UMKM. Sistem yang dikembangkan hanya mencakup proses pencatatan, pemantauan, dan pelaporan persediaan barang pada Lookatstore.id Mempawah.
+
+Ruang Lingkup Penelitian
+Berdasarkan perancangan sistem yang akan dikembangkan, sistem informasi persediaan barang pada UMKM Lookatstore.id Mempawah memiliki tiga fitur utama, yaitu fitur data barang, fitur barang masuk, dan fitur barang keluar. Selain itu, sistem juga dilengkapi dengan fitur laporan, yang mencakup laporan barang masuk dan laporan barang keluar. Untuk memudahkan pengguna dalam menemukan data yang dibutuhkan, sistem ini menyediakan fitur pencarian (search) yang memungkinkan pencarian data barang berdasarkan berbagai kriteria tertentu.
+Fitur yang dikaji dalam penelitian ini dibatasi pada pengelolaan persediaan barang yang bersifat operasional dasar, yaitu pencatatan data barang, barang masuk, dan barang keluar. Penelitian ini tidak membahas proses lanjutan yang memerlukan pengelolaan khusus dan analisis manajerial, seperti penanganan barang rusak, analisis kerugian, serta pengelolaan retur barang secara mendalam. Pembatasan ini dilakukan agar perancangan sistem dapat difokuskan pada kebutuhan utama operasional UMKM, sehingga sistem yang dihasilkan bersifat lebih terarah, praktis, dan mampu meningkatkan efisiensi serta ketepatan pengelolaan persediaan barang di Lookatstore.id Mempawah.
+Guna menjaga keamanan data dan membatasi hak akses pengguna, sistem ini juga menerapkan fitur login sebagai sistem autentikasi serta fitur logout untuk mengakhiri aktivitas pengguna dengan aman. Dengan adanya fitur-fitur tersebut, sistem ini diharapkan mampu membantu proses pengelolaan persediaan barang di Lookatstore.id Mempawah secara lebih efektif, efisien, dan terintegrasi.
+Fitur data barang berfungsi untuk menyimpan dan mengelola informasi detail mengenai setiap produk yang dijual di toko, seperti kode barang, nama produk, kategori, dan jumlah persediaan yang tersedia. Fitur barang masuk digunakan untuk mencatat setiap penerimaan barang dari pemasok (supplier), sedangkan fitur barang keluar mencatat setiap pengeluaran barang, baik akibat penjualan kepada pelanggan maupun transaksi internal lainnya.
+Ruang lingkup penelitian ini difokuskan pada proses perancangan sistem informasi persediaam barang pada UMKM Lookatstore.id Mempawah. Untuk mencapai tujuan tersebut, peneliti menggunakan metodologi Software Development Life Cycle (SDLC) dengan model Waterfall. Model ini dipilih karena memberikan pendekatan pengembangan perangkat lunak secara sistematis dan berurutan, dimulai dari tahap analisis kebutuhan, perancangan sistem, pengkodean menggunakan bahasa pemrograman PHP dan basis data MySQL, hingga tahap pengujian dan pemeliharaan (support).
+Sebagai alat bantu pemodelan sistem, penelitian ini juga menggunakan UML (Unified Modeling Language) untuk menggambarkan struktur dan alur sistem melalui berbagai diagram, seperti use case diagram, activity diagram, class diagram, dan sequence diagram.
+
+Tujuan dan Manfaat Penelitian
+Manfaat dari perancangan sistem informasi persediaan barang ini bagi UMKM Lookatstore.id adalah sebagai berikut:
+Tujuan Penelitian
+Penelitian ini memiliki tujuan yaitu menghasilkan rancangan sistem informasi persediaan barang yang dapat dipergunakan oleh UMKM Lookatstore.id untuk membantu pengelolaan persediaan barang, pencatatan keluar-masuk barang secara langsung dan akurat sehingga membantu meminimalisir kesalahan dan membantu pengambilan keputusan yang lebih baik.
+1.5.2Manfaat Penelitian
+Manfaat dari perancangan sistem informasi persediaan barang pada UMKM Lookatstore.id adalah sebagai berikut:
+Bagi Penulis
+Manfaat yang diperoleh penulis adalah agar dapat menerapkan pengetahuan yang telah diperoleh selama perkuliahan di STMIK Pontianak maupun dari berbagai sumber lainnya. Penelitian ini juga diharapkan dapat menambah wawasan dan pengetahuan penulis dalam bidang perancangan sistem informasi, serta melatih kemampuan dalam menganalisis permasalahan nyata di lingkungan bisnis. Melalui penelitian ini, penulis dapat memahami bagaimana merancang solusi yang tepat guna mendukung efisiensi operasional dan pengambilan keputusan berbasis data.
+Bagi UMKM Lookatstore.id
+Penelitian ini diharapkan dapat menghasilkan sistem informasi persediaan barang yang mampu membantu proses pencatatan persediaan secara akurat dan menyediakan data secara langsung. Dengan adanya sistem ini, pemilik UMKM dapat lebih mudah melakukan pemantauan terhadap ketersediaan barang, menentukan waktu pemesanan ulang, serta mengurangi risiko kekurangan maupun kelebihan persediaan. Selain itu, penerapan sistem ini juga diharapkan dapat meningkatkan efisiensi kerja dan kepuasan pelanggan melalui ketersediaan produk yang lebih terjamin.
+
+1.6 Sistematika Penelitian
+Sistematika penulisan skripsi ini terdiri atas enam bab, di mana setiap bab memiliki beberapa sub bab yang saling berkaitan. Penulis memberikan penjelasan singkat mengenai isi dari masing-masing bab dengan tujuan agar pembaca memperoleh gambaran yang lebih jelas dan terarah mengenai keseluruhan isi skripsi ini.
+Bab 1 Pendahuluan
+Bab ini menjelaskan mengenai latar belakang penelitian, rumusan masalah, batasan masalah, ruang lingkup penelitian, tujuan penelitian, manfaat penelitian, serta sistematika penulisan. Bagian ini memberikan gambaran umum mengenai arah dan fokus penelitian yang dilakukan.
+Bab 2 Landasan Teori Dan Kerangka Pemikiran
+Bab ini berisi tentang tinjauan pustaka, landasan teori, dan kerangka pemikiran. Tinjauan pustaka memaparkan hasil penelitian terdahulu dalam bentuk jurnal yang relevan dengan topik penelitian ini. Landasan teori menjelaskan konsep-konsep dasar yang berkaitan dengan sistem informasi, persediaan barang, serta teknologi yang digunakan. Sedangkan kerangka pemikiran menggambarkan alur berpikir secara sistematis dalam memecahkan permasalahan yang menjadi fokus penelitian.
+Bab 3 Gambaran Umum UMKM Lookatstore.id Mempawah
+Bab ini berisi penjelasan mengenai profil umum UMKM Lookatstore.id Mempawah, struktur organisasi, pembagian tugas dan tanggung jawab, serta tata laksana sistem yang berjalan saat ini. Uraian ini bertujuan untuk memberikan pemahaman tentang kondisi nyata UMKM sebelum dilakukan perancangan sistem.
+Bab 4 Metodologi Penelitian
+Bab ini menguraikan bentuk dan metode penelitian yang digunakan, meliputi metode pengumpulan data, teknik analisis, serta tahapan perancangan sistem. Selain itu, bab ini juga menjelaskan model pengembangan perangkat lunak yang diterapkan, yaitu Software Development Life Cycle (SDLC) dengan model Waterfall, serta alat bantu pemodelan sistem menggunakan Unified Modeling Language (UML).
+
+BAB 2
+LANDASAN TEORI DAN KERANGKA PEMIKIRAN
+
+2.1 Landasan Teori
+2.1.1 Sistem Informasi
+Menurut Widardti, dkk (2024:28) “Sistem Informasi (SI) menjadi landasan dalam pengelolaan dan pemanfaatan informasi yang efektif guna mendukung keputusan, pengendalian, dan operasional dalam suatu organisasi”. Sedangkan menurut Kosasi (2024), “Sistem informasi merupakan sekumpulan komponen yang saling bekerja sama, mulai dari sumber daya manusia, perangkat keras, perangkat lunak, hingga jaringan komunikasi untuk mengolah data menjadi informasi yang bernilai guna bagi organisasi dalam mendukung pengambilan keputusan. Hal ini sejalan dengan kebutuhan UMKM saat ini yang memerlukan integrasi data yang cepat dan akurat”. Berdasarkan dua kutipan tersebut, dapat disimpulkan bahwa sistem informasi merupakan kesatuan terstruktur dari berbagai komponen yang saling berinteraksi untuk mengolah dan menyalurkan informasi secara sistematis, serta berperan penting dalam menyediakan data yang akurat dan relevan guna mendukung efisiensi operasional dan pengambilan keputusan dalam organisasi.
+Berikut adalah beberapa karakteristik sistem (Sutabri dalam Wijayanto dkk, 2024: 3-5): 
+Komponen Sistem 
+Suatu sistem dapat memiliki sistem yang lebih besar yang disebut sebagai supra sistem. Suatu sistem terdiri dari sejumlah komponen yang saling berinteraksi dan bekerja sama untuk membentuk satu kesatuan. Setiap subsistem memiliki karakteristik sistem yang memungkinkannya menjalankan fungsi tertentu dan mempengaruhi proses sistem secara keseluruhan. 
+Batasan Sistem 
+Ruang lingkup sistem adalah area yang membatasi suatu sistem dengan sistem lain atau lingkup luarnya. Batasan ini memungkinkan suatu sistem dianggap sebagai satu kesatuan yang tidak dapat dipisahkan. 
+Lingkup Luar Sistem 
+Lingkungan luar sistern adalah segala sesuatu yang eda di luar ruang lingkup atau batasan sistem yang mempengaruhi operasi sistem. Lingkungan luar yang ada di sekitar sistem ini dapat bermanfaat maupun berbahaya baginya. Yang bermanfaat harus selalu dijaga dan dipelihara, sedangkan yang merugikan haris dikendalikan. Jika tidak, itu akan mengganggu kelangsungan sistem.
+Penghubung Sistem 
+Salah satu istilah untuk penghubung sistem atau interface adalah media yang menghubungkan sistem ke subsistem yang lain. Penghubung ini memungkinkan sumber daya mengalir dari satu subsistem ke subsistem yang lain. dan keluaran dari satu subsistem dapat dimasukkan ke subsistem yang lain melalui penghubung. Akibatnya, sistem terintegrasi menjadi satu kesatuan. 
+Masukan Sistem 
+Masukan sistem adalah energi yang masukkan ke dalam sistem. Masukan sistem dapat berupa pemeliharaan (maintenance input) atau sinyal (signal input). Program, yang digunakan dalam suatu unit sistem komputer. Adalah pemeliharaan input, dan data adalah sinyal input, yang akan diolah menjadi informasi. 
+Keluaran Sistem 
+Output energi yang diolah dan dikategorikan sebagai keluaran yang berguna. Sebagai contoh, sistem informasi menghasilkan keluaran yang berupa intormasi, yang dapat digunakan sebagai masukan untuk pangambilan keputusan etau hal-hal lain yang merupakan input bagi subsistem yang lain. 
+Pengolahan Sistem
+Suatu proses dapat dimiliki oleh sistem untuk mengkonversi masukan menjadi keluaran. seperti sistem akuntansi. Laporan dan laporan yang dibutuhkan manajemen akan dibuat dari data transaksi yang diproses oleh sistem ini. 
+Sasaran Sistem 
+Sistem dikatakan berhasil jika mencapai tujuan atau sasaran yang telah direncanakan, dan memiliki tujuan yang jelas dan deterministic. Jika tidak ada tujuan, operasi sistem tidak berguna.
+
+Menurut Rommey dalam Supartha dkk. (2023:5) “Informasi merupakan sesuatu yang menunjukkan hasil pengolahan data yang diorganisasi dan berguna kepada orang yang menerimanya”. 
+Informasi yang berkualitas akan membantu kita dalam membuat keputusan yang lebih baik. Informasi yang akurat, relevan, dan terkini akan memberikan landasan yang kuat untuk mengambil tindakan. Sebaliknya, informasi yang salah atau bias dapat mengarah pada keputusan yang merugikan. Kualitas dari informasi tergantung pada tiga hal, antara lain (Supartha dkk, 2023:6-7): 
+Akurat (Accuracy) 
+Informasi harus bebas dari kesalahan-kesalahan dan tidak bias atau menyesatkan, dan harus jelas mencerminkan maksudnya. Ketidakakuratan data dapat terjasi karena sumber informasi (data) mengalami gangguan atau kesengajaan sehingga merusak atau merubah data-data asli tersebut. 
+Tepat waktu (Timeliness) 
+Informasi yang dihasilkan atau dibutuhkan tidak boleh terlambat (using). Informasi yang using tidak mempunyai nilai yang baik, sehingga kalau digunakan sebagai dasar dan pengambilan keputusan akan berakibat fatal atau kesalahan dan keputusan dan tindakan. Kondisi demikian menyebabkan mahalnya nilai suatu informasi, sehingga kecepatan untuk mendapatkan, mengolah dan mengirimnya memerlukan teknologi-teknologi terbaru. 
+Relevan (Relevancy) 
+Berarti informasi harus memberikan manfaat bagi pemakainya. Relevansi untuk tiap-tiap orang satu dengan yang lainnya berbeda. Misalnya informasi mengenai sebab-musabab kerusakan mesin prodiksi kepada akuntan persahaan adalah kurang relevan dan akan lebih relevan bila ditujukan kepada ahli teknik perusahaan. 
+
+Menurut Supartha dkk. (2023:7) sistem informasi adalah kumpulan kompleks informasi, data, dan proses yang saling berhubungan. Mereka digunakan dalam semua aspek kehidupan manusia, bisnis, dan industri. Definisi sistem infromasi dalam teknologi adalah istilah luas yang mengacu pada sistem atau alat informasi apa pun yang membantu pengumpulan dan penggunaan data. Sistem informasi dapat digunakan untuk memberi bantuan dalam suatu organisasi, atau dapat diginakan untuk keuntungan pribadi. Sederhananya sistem informasi adalah serangkatai metode dan teknik teknologi yang digunakan untuk menyimpan, mengatur, mengelola dan mengambil informs secara digital. Mereka mengambil berbagai bentuk seperti komputer, perangkat seluler, tablet dan program perangkat lunak. 
+
+Sistem informasi terdiri dari komponen-komponen terintegrasi yang berfungsi sebagai blok bangunan (building block), meliputi blok masukan, blok model, blok keluaran, blok teknologi, blok basis data, dan blok kendali. Keenam komponen ini saling berinteraksi secara sinergis untuk mengolah data menjadi informasi yang berkualitas guna mencapai sasaran organisasi (Hardi, 2022) .
+Blok masukan (input block)
+Input mewakili data yang masuk kedalam sistem informasi. Input yang dimaksud adalah metode dan media untuk menangkap data yang akan dimasukan, yang dapat berupa dokumen-dokumen dasar. 
+Blok model (model block) 
+Blok ini tediri dari kombinasi prosedur, logika, danmodel matematik yang akan memanipulasi data input dan data yang tersimpan di basis data dengan cara yang sudah tertentu untuk menghasilkan keluaran yang diinginkan. 
+Blok keluaran (output block) 
+Produk dari sistem informasi adalah keluaran yang merupakan informasi yang berkualitas dan dokumentasi yang berguna untuk semua tingkatan manajeman serta semua pemakai sistem. 
+Blok teknologi (technology block) 
+Teknologi merupakan “tool box” dalam sistem informasi. Teknologi digunakan untuk menerima input, menjalankan model, menyimpan dan mengakses data, menghasilkan dan mengirimkan keluaran, dan membantu pengendalian dari sistem secara keseluruhan. Teknologi terdiri dari 3 (tiga) bagian utama, yaitu teknisi (brainware), perangkat lunak (software), dan perangkat keras (hardware). 
+Blok basis data (database block) 
+Basis data (database) merupakan kumpulan data yang saling berkaitan dan berhubungan satu sama lain, tersimpan di perangkat keras komputer dan menggunakan perangkat lunak untuk memenipulasinya. Datadi dalambasisdata perlu diorganisasikan sedemikian rupasupaya informasi yang dihasilkan berkualitas. Organisasi basis data yang baik juga berguna untuk efisiensi kapasitas penyimpanannya. Basis data diakses atau dimanipulasi menggunakan perangkat lunak paket yang disebut DBMS (Database Management System). 
+Blok kendali (control block) 
+Banyak hal yang dapat merusak sistem informasi, seperti bencana alam, api, temperatur, air, debu, kecurangan-kecurangan, keagalan-kegagalan sistem itu sendiri, ketidak efisienan, sabotase, dan lain sebagainya. Beberapa pengendalian perlu dirancang dan diterapkan untuk meyakinkan bahwa hal hal yang dapat merusak sistem dapat dicegah ataupun bila terlanjur terjadi kesalahan-kesalahan dapat langsung cepat diatasi. 
+
+Menurut Rukmana dkk. (2023:6) data mewakili fakta dan angka mentah yang dikumpulkan dan diproses dalam suatu organisasi, sementara prosedur menentukan aturan, protocol dan pedoman yang mengatur penggunaan sistem informasi. Akhirnya, orang mainkan peran penting dalam sistem informasi sebagai pengguna, pengembang, administrator, dan pembuat keputusan, berinteraksi dengan sistem untuk mengekstraksi nilai dan membuat pilihan berdasarkan informasi.
+
+2.1.2 Persediaan
+Hal yang paling utama yang menjadi dasar perusahaan dalam menggunakan prinsip persediaan adalah karena ukuran lot produksi yang ekonomis. Jumlah lot banyak sedikit ini akan memberikan pengaruh sedikit banyak kepada efesiensi. Perusahaan yang menggunakan prinsip lot yang bersifat ekonomis di sini pasti akan mengelola barang tersebut secara berkelanjutan dalam persediaan. Terdapat 4 macam fungsi dari persediaan, antara lain (Eunike dkk 2021:26-30): 
+Persediaan dalam tranportasi 
+Persediaan ini bergantung kepada waktu yang digunakan untuk mengirim barang dari perusahaan ke lokasi lainnya. Persediaan ini juga disebut persediaan saluran (pipeline inventory). Perusahaan dapat mempengaruhi jumlah dari persediaan dalam transportasi dengan mengubah desain sistem distrbusi. 
+Persediaan siklus
+Persediaan ini akan muncul ketika permintaan kepada bagian produksi lebih banyak dari pada permintaan yang muncul dari pelanggan yang akan digunakan untuk memenuhi adanya skala ekonomi. 
+Persediaan pengaman 
+Persdiaan ini akan memberikan perlindungan kepada perusahaan ketika terjadi ketidakpastian permintaan dan supply bahan baku. Hal ini terjadi ketika permintaan lebih besar dari pada yang diramalkan oleh perusahaan atau ketika waktu untuk memesan bahan baku ulang lebih lama dari yang diestimasi. Persediaan pengaman akan menjamin bahwa permintaan pelanggan dapat dipenuhi dengan segera, dan apa yang tidak diinginkan oleh pelanggan yang tidak ingin menunggu ketika barang yang diinginkan tidak tersedia. 
+Persediaan antisipasi
+Persediaan antisipasi dibutuhkan untuk produk yang memiliki pola data bersifat musiman dan supply yang seragam. Persediaan antisipasi digunakan untuk mengantisipasi kondisi jumlah permintaan yang tinggi. Hal ini juga perlu adanya trade off yang dilakukan perusahaan.
+
+2.1.3 Perancangan Sistem
+Menurut Julius (2024) “Menjelaskan bahwa perancangan sistem adalah tahap penentuan proses dan data yang diperlukan oleh sistem baru, yang bertujuan untuk memberikan gambaran yang jelas serta rancang bangun yang lengkap kepada pemrogram dan ahli teknik lainnya. Tahapan ini sangat krusial agar sistem informasi persediaan barang yang dibangun sesuai dengan kebutuhan operasional pengguna”. Sedangkan menurut Kharisma, dkk (2023:20) “Perancangan sistem informasi merupakan pengembangan sistem baru dari sistem lama yang ada, dimana pada sistem yang baru diharapkan dapat mengatasi masalah-masalah yang terjadi pada sistem lama”. Sedangkan menurut Nirsal dkk (2025:12) Menjelaskan bahwa perancangan sistem adalah tahapan yang mengikuti analisis sistem dan bertujuan untuk merancang sistem yang sesuai dengan kebutuhan yang telah dianalisis. Dalam perancangan sistem, solusi yang diidentifikasi pada tahap analisis akan diwujudkan menjadi suatu desain yang dapat diterapkan dalam implementasi sistem. Desain ini mencakup perancangan arsitektur sistem, desain database, antarmuka pengguna, dan alur proses. Perancangan yang baik dapat meningkatkan efisiensi, efektivitas, dan fleksibilitas sistem yang dibangun. Perancangan yang matang akan memudahkan pemeliharaan dan pengembangan sistem di masa depan.
+Perancangan sistem merupakan tahap krusial pasca analisis sistem yang berfungsi untuk mentransformasikan hasil analisis kebutuhan menjadi rancangan sistem yang terintegrasi dan terstruktur. Tahapan ini bertujuan untuk menghasilkan desain sistem yang mampu menyelesaikan permasalahan pada sistem sebelumnya serta meningkatkan efisiensi, efektivitas, dan fleksibilitas kinerja sistem. Perancangan yang dilakukan secara komprehensif dan terencana akan mempermudah proses implementasi, pemeliharaan, serta pengembangan sistem di masa mendatang.
+Beberapa aspek penting dalam pengertian perancangan sistem menurut Hatta dkk (2023:9-10) yaitu:
+Arsitektur Sistem: Menentukan struktur keseluruhan dari sistem, termasuk bagaimana komponen-komponen saling terhubung dan berinteraksi satu sama lain.
+Desain Teknis: Merancang secara rinci bagaimana sistem akan diimplementasikan, termasuk pemilihan teknologi, spesifikasi hardware, sofware, dan infrastruktur yang diperlukan.
+Antarmuka Pengguna: Merancang antarmuka yang mudah digunakan dan sesuai dengan kebutuhan pengguna agar interaksi dengan sistem menjadi lebih efesien.
+Desain Basis Data: mendefinisikan struktur data, hubungan antar data, dan model basis data yang diperlukan untuk mendukung fungsi sistem.
+Keamanan Sistem: Merencanakan fitur keamanan untuk melindungi sistem dari ancaman internal mauoun eksternal.
+Uji Coba dan Pengujian: Merancang rencana pengujian untuk memastikan sistem berfungsi sebagaimana mestinya dan memenuhi kebutuhan yang telah ditetapkan.
+
+Tujuan Perancangan Sistem, Hatta dkk (2023:) menyatakan yaitu:
+Pemenuhan Kebutuhan: Merancang sistem agar sesuai dengan kebutuhan dan tujuan yang telah diidentifikasi selama analisis sistem.
+Optimalisasi Kinerja: Merancang agar sistem dapat beroperasi secara efisien, memaksimalkan kinerja dan produktivitas.
+Skalabilitas dan Fleksibilitas: Menciptakan sistem yang dapat ditingkatkan dan disesuaikan dengan perubahan kebutuhan di masa depan.
+Kualitas dan Keandalan: Menjamin bahwa sistem memiliki kualitas yang baik dan dapat diandalkan dalam penggunaannya sehari-hari.
+Kesesuaian dengan Standar dan Regulasi: Memastikan bahwa sistem dirancang sesuai dengan standar keamanan, kepatuhan hukum, dan peraturan yang berlaku.
+
+2.1.4 Perancangan Input dan Output
+Menurut Prehanto (2020:5) “Masukkan sistem merupakan sumber daya yang dimasukkan kedalam sistem, yang dapat berupa perawatan (maintenance input), dan masukkan sinyal (signal input). Maintenance Input adalah sumber daya yang dimasukkan agar sistem dapat beroperasi. Signal Input adalah sumber daya yang diproses untuk didapatkan keluaran”. 
+
+Menurut Santi (2020:77) “Alat input dapat digolongkan menjadi dua golongan yaitu alat input langsung (keyboard, mouse, dan touch screen) dan tidak langsung (key to card, key to tape, key to disk). Proses input dapat dilakukan dengan pengumpulan data, penyimpanan data, dan pemasukan data. Sedangkan input dapat digolongkan menjadi dua tipe, yaitu tipe eksternal input (seperti faktu pembelian, kuitansi-kuitansi) dan internal input (seperti faktur penjualan, order penjualan)”. 
+
+Menurut Prameswari dkk (2024:17) “Input adalah informasi, data, atau sumber daya yang dimasukkan ke dalam suatu sistem untuk diolah. Ini adalah titik awal di mana system memperoleh data yang akan dianalisis atau diproses”.
+ Terdapat beberapa alat input langsung berdasarkan golongannya (Santi, 2020: 80): 
+Keyboard
+Contohnya ada pada peralatan seperti Teleprinter Terminal, Financial Transaction Terminal / ATM, Point of sale / atau di supermarket. 
+Pointing device 
+Contohnya ada pada peralatan seperti Mouse, Touch Screen / layar sentuh, Light Pen / sentuhan pena, dan Digitizer graphics tablet. 
+Scanner 
+Contohnya ada pada peralatan seperti Magnetic ink Character Recognition reader / untuk transaksi cek, Optical data reader (OCR reader, OCR tag reader, bar code wand, optical mark reader). 
+Sensor 
+Contohnya ada pada peralatan seperti mata di komputer, digitizing camera. 
+Voice/speech recognizer. 
+
+Kemudian yang termasuk kepada golongan alat input tidak langsung adalah sebagai berikut (Santi, 2020: 81):
+ a. Key-to-card Alat ini berfungsi memasukkan data ke dalam bentuk kartu plong atau kartu pon, kemudian Kumpulan dari karty pling dibacakan ke komputer dengan menggunakan alat pembaca mesin / card reader. 
+b. Key-to-tape Alat ini berfungsi memasukkan data ke dalam bentuk pita magnetik sebelum diproses ke CPU. Bila data akan dimasukan ke dalam komputer digunakan alat pembaca pita magnetik seperti tape reader / driver / unit. 
+c. Key-to-disk 
+Alat ini berfungsi memasukkan data ke dalam disk magnetik / disket dan dibacakan ke komputer melalui disk driver. 
+
+Menurut Prehanto (2020:6) “Keluaran sistem adalah energi yang dihasilkan setelah pemrosesan inputan keluaran yang dibuang maupun dibutuhkan”. Menurut Prameswari dkk. (2024:17) “Output adalah hasil yang dihasilkan dari proses yang telah dilakukan dari data input. Output adalah informasi yang telah diolah atau hasil yang diinginkan dari sistem. Dalam konteks komputer, output bisa berupa text, gambar, suara, atau bentuk informasi lain yang disajikan kepada pengguna”. 
+Menurut Supartha dkk. (2023:5) “Keluaran system adalah hasil dari energi yang diolah dan diklasifikasi menjadi keluaran yang berguna dan sisa pembuangan. Keluaran dapat merupakan masukan untuk subsistem yang lain atau kepada supra sistem”. Alat yang berfungsi untuk menampilkan hasil dan proses dikenal dengan istilah peralatan output. Output yang dihasilkan dari pengelolaan data dapat digolongkan ke dalam empat macam bentuk antara lain sebagai berikut (Santi, 2020: 81-82): 
+Tulisan, terdiri dari huruf, angka, karakter khusus dan simbol-simbol. 
+Image, di dalam suatyu bentuk grafik atau gambar. 
+Suara, di dalam bentuk musik atau omongan. 
+Bentuk yang dapat hanya dibaca dan dimengrti oleh mesin atau komputer. Biasanya output ini digunakan untuk input proses berikutnya.
+
+2.1.5 Basis Data
+Menurut Firmansyah dan Pitriani (2024) “Basis data adalah kumpulan data yang terorganisir secara logis dan saling berelasi sedemikian rupa sehingga mudah disimpan, dimanipulasi, dan dipanggil kembali. Dalam penelitian ini, MySQL digunakan sebagai sistem manajemen basis data untuk memastikan integritas data persediaan barang”. 
+Database dapat didefinisikan dalam sejumlah sudut pandang diantaranya Fathansyah dalam Hariyono dkk. (2023:3): 
+a. Himpunan kelompok data yang saling berhubungan yang diorganisaisedemikian rupa agar kelak dapat dimanfaatkan kembali dengan cepat dan mudah. 
+b. Kumpulan data yang saling berhubungan yang disimpan secara bersama sedemikian rupa dan tanpa pengulangan (redudansi) yang tidak perlu, untuk memenuhi berbagai kebutuhan. 
+c. Kumpulan file/tabel yang saling berhubungan yang disimpan dalam media penyimpanan elektronik. 
+
+Menurut Jayanti dalam Ihksan dkk (2023:1) “Basis data juga disebut database, terdiri dari kata “basis” dan “data”. Data adalah catatan atas kumpulan fakta yang mewakili suatu objek, yang memiliki sifat mentah dan tidak memiliki konteks. Sementara itu basis dapat diartikan sebagai markas, tempat berkumpulnya objek, atau representasi dari objek”. 
+
+Menurut Jamaludin dalam Ihksan dkk. (2023:2) “Sebuah sistem basis data berisi kumpulan basis data didalam sistem yang mungki tidak terkait satu sama lain, tetapi terkait sebagai satu kesatuan sistem yang didukung oleh komponen lainnya”. Menurut Fikry dalam Ihksan (2023:2) “Sistem basis data terdiri dari himpunan atau kumpulan tabel data dan program yang saling terkait atau berhubungan, yang memungkinkan pemakai (user) atau program lain untuk menggunakan atau mengakses dan mengubah tabel data”. 
+Dalam sistem basis data memiliki beberapa komponen yaitu sebagai berikut Ihksan dkk. (2023:2-3): 
+Perangkat keras (Hardware) 
+Perangkat keras yang biasanya terdapat dalam sistem basis data adalah sever database, hardisk, dll. 
+Sistem operasi (Operating System) 
+Sistem Operasi (Operating System) Program yang memulai atau mengoperasikan sistem komputer, mengontrol atau mengatur semua sumber daya (resources), dan melakukan operasi pada komputer. 
+Management System 
+Operasi data fisik tidak dilakukan langsung oleh pengguna, tetapi oleh perangkat lunak yang menentukan bagaimana data disimpan, dimodifikasi, dan diambil kembali. 
+Pemakai (User) 
+Pengguna dapat berinteraksi dengan database dan memanipulasi data dengan program yang ditulis dalam bahasa pemrograman. 
+Aplikasi atau Perangkat Lain 
+Aplikasi ini tergantung pada kebutuhan, pengguna basis data dapat menulis program khusus yang mudah digunakan untuk memasukkan, memodifikasi, dan mengambil data. 
+
+Normalisasi basis data merupakan proses yang digunakan untuk mengatur data dalam basis data relasional. Tujuannya untuk mengurangi redudansi data dan meningkatkan integritas data dengan memecah data mejadi tabel-tabel yang lebih kecil dan saling terkait. Fungsi normalisasi basis data dapat dijelaskan dari berbagai aspek penting, yang semuanya bertujuan untuk meningkatkan kualitas dan efesiensi sistem basis data Menurut Permatasadi dkk. (2024:60): 1) 
+Mengurangi Redudansi Data Noemalisasi membantu memecah data menjadi tabel yang lebih kecil sehingga setiap bagian informasi hanya disimpan sekali. Dengan menghilangkan redudansi, data menjadi lebih hemat ruang dan konsistensi lebih terjaga. Hal ini juga meminimalisir risiko saat mengubah data di banyak tempat.
+Meningkatkan Integritas Data Integritas data terjaga karena normalisasi memastikan bahwa semua data yang saling berkaitan disimpan dalam tabel yang tepat dan hanya terhubung melalui kunci (primary key dan foreign key). Kergantungan transitif dan ketergantungan parsial dihilangkan, sehingga data lebih akurat dan mudah diverifikasi.
+Mengurangi Anomali dalam Basis Data Anomali terjadi ketika ada masalah saat menambah, memperbarui, atau menghapus data dalam basis data yang tidak ternormalisasi. Normalisasi mencegah tiga jenis anomali utama: 
+Anomali Penambahan, Data yang tidak dapat dimasukkan kerena harus mengisi data redundan yang belum ada. 
+Anomali Penghapusan, Penghapusan satu data menyebabkan hilangnya data penting lainnya. 
+Anomali Pembaruan, Ketidakkonsistenan terjadi ketika memperbarui data pada satu tempat tetapi tidak pada tempat lain.
+Memperbaiki Efesiensi Query Dengan data yang tersusun secara logis dalam tabel-tabel yang berbeda, query dapat dilakukan lebih efesien. Penggunaan join antar tabel memungkinkan akses data yang cepat dan akurat, serta menghindari pemrosesan data berulang.
+Mempermudah Pemeliharaan Data Normalisasi membuat sistem lebih mudah diperbarui dan dikelola. Karena tabel-tabel terstruktur dengan baik, pengembangan dan pemeliharaan basis data menjadi lebih sistematis, misalnya saat melakukan perubahan skema basis data atau menambah fitur baru.
+Meminimalkan Ketrgantungan Antar Data Setiap atribut non-kunci hanya bergantung pada kunci uatama. Ini membuat basis data lebih modular, sehingga perubahan pada satu tabel tidak mempengaruhi tabel lainnya, selama hubungan kunci antara tabel tetap terjaga. 
+Menurut Rerung (2020), MySQL merupakan sistem manajemen basis data (database server) yang memiliki kemampuan sangat cepat dalam proses pengiriman dan penerimaan data, bersifat multi-user, serta menggunakan bahasa standar Structured Query Language (SQL). Sebagai perangkat lunak yang bersifat open source, MySQL memungkinkan pengguna untuk mengelola basis data secara gratis untuk keperluan pribadi maupun usaha tanpa harus membeli lisensi khusus. Dalam operasionalnya, MySQL bekerja dengan arsitektur client-server, di mana program aplikasi bertindak sebagai client yang mengakses data pada MySQL yang berposisi sebagai server. 
+
+Berikut ini adalah beberapa keunggulan dan juga kelebihan data base management system MySQL (Namruddin dkk, 2023:3): 
+Merupakan salah satu software yang portable 
+Artinya MySQL dijalankan untuk mengolah datbase multi platform.
+MySQL merupakan salah satu DBMS yang opensource 
+MySQL dengan versi paling basic atau sederhana dijual dengan harga gratis, karena merupakan software open source.
+Multi-User 
+MySQL memiliki kemampuan yang sangat baik untuk mendukung kepentingan multiuser, dimana bisa dijalankan oleh banyak user dalam satu waktu tanpa perlu mengalami kendala seperti crash, dan semacamnya.
+Memiliki tipe yang bervariasi 
+Tipe data yang ditawarkan oleh MySQL juga sangat bervariasi. Beberapa tipe data yang ditawarkan oleh MySQL adalah integer, float, double, char, text, date, timestamp da masih banyak lagi.
+Memiliki fitur keamanan yang baik 
+Kelebihan lain dari MySQL adalah fitur keamananya yang cukup baik, apalagi dengan statusnya open source, alias gratis, fitur keamanan yang ditawarkan oleh software ini sudah sangat mempuni.
+Administrative tools yang lengkap 
+User dan juga progammer dapat menggunakan MySQL dengan mudah, tanpa perlu harus repot-repot mempelajari MySQL secara detail.
+Struktur tabel yang lebih fleksibel 
+Struktur data yang dimiliki oleh MySQL juga dinilai lebih fleksibel dan mudah untuk digunkana. Hal ini terutama untuk menangani tabel berupa Alet Table.
+Dapat diintregasikan dengan berbagai bahasa pemrograman 
+MySQL juga dapat diintegrasikan dengan berbagai macam bahasa pemrograman yang ada. Dengan begitu, MySQL bisa membantu pembangunan dari sebuah sistem dengan mudah dan juga efektif, karena dapat terintegrasi dengan berbagai macam bahasa pemrograman standar yang biasa digunakan dalam pembangunan suatu sistem.
+ Tidak membutuhkan spesifikasi hardware yang tinggi 
+Salah satu hal penting yang menarik yang ada pada MySQL adalah spesifikasi. Untuk dapat menjalan kanprogram MySQL ini, maka tidak dibutuhkan spesifikasi minimal komputer yang tinggi, sehingga PC ataupun laptop sekalipun masih bisa menggunakan softwareMySQL ini dengan baik tanpa menemui kendala dan masalah mengenai spesifikasinya. 
+RAM Kecil dapat menggunakannya 
+DBMS memiliki kelebihan yaitu dapat di installdi ram yang relatif kecil bila di bandingkan dengan database lain. Tak ayal, hanya dengan memory < 1gb pun anda dapat menggunakan DBMS ini.
+2.1.6 Framework Django
+Menurut Pandansari dan Prastiantomo (2025), Django merupakan framework pengembangan web berbasis Python yang digunakan untuk membangun aplikasi web secara cepat, terstruktur, dan efisien. Django menyediakan berbagai fitur bawaan yang membantu pengembang dalam proses pengembangan aplikasi berbasis website.
+
+Nurdiansyah dkk. (2024) juga menjelaskan bahwa penggunaan framework Django dapat meningkatkan efektivitas pengembangan sistem berbasis web karena memiliki struktur kode yang terorganisasi serta mendukung proses pengembangan yang lebih cepat melalui penggunaan komponen yang dapat digunakan kembali (reusable component). Dengan dukungan dokumentasi yang lengkap dan kemampuan integrasi yang baik, Django banyak digunakan dalam pembangunan sistem informasi berbasis web di berbagai bidang.
+2.1.7 Bahasa Pemrograman
+Menurut Arifin dkk. (2023:33) Bahasa pemrograman merupakan alat yang digunakan untuk memberikan instruksi kepada komputer. Dalam dunia yang semakin tergantung pada teknologi, bahasa pemrograman memainkan peran penting dalam mengembangkan perangkat lunak yang andal, aplikasi yang menarik, dan sistem yang kompleks.
+
+Menurut Stroustrup dalam Arifin dkk. (2023:34) “Menggambarkan bahasa pemrograman sebagai alat yang memungkinkan manusia untuk menggambarkan solusi komputasioanl secara efesien, terstruktur, dan berarti”. Menurut Booch dalam Arifin dkk. (2023:34) “Menjelaskan bahwa bahasa pemrograman adalah alat formal untuk mengekspresikan gagasan dan proses komputasi kepada komputer”.
+Menurut Perlis dalam Arifin dkk. (2023:34) “Menganggap bahasa pemorograman sebagai alat ekspresi yang hebat yang dirancang untuk membantu pikiran manusia dalam merancang prosedur yang dapat dijalnkan oleh mesin komputer”. Menurut Wirth dalam Arifin dkk. (2023:34) “Menjelaskan bahwa bahasa pemrograman adalah media ekspresi bagi manusia untuk merancang program komputer dan mengominikasikan algoritma kepada mesin. 
+Menurut Rerung (2020), PHP (Hypertext Preprocessor) adalah bahasa pemrograman scripting bersifat server-side yang terintegrasi dengan HTML untuk membangun aplikasi web yang dinamis. Sebagai bahasa pemrograman jenis interpreter, PHP bekerja dengan cara menerjemahkan baris kode sumber secara langsung menjadi kode mesin yang dimengerti oleh komputer pada saat aplikasi dijalankan. 
+Penggunaan PHP memungkinkan suatu halaman situs web tidak lagi bersifat statis, melainkan dapat berinteraksi dengan pengguna dan basis data. Sifat server-side pada PHP berarti seluruh proses eksekusi kode dilakukan di sisi server, sehingga pengguna melalui browser hanya menerima hasil akhir berupa tampilan HTML yang sudah diproses.
+Menurut Rerung (2020), Hypertext Preprocessor atau PHP merupakan bahasa pemrograman scripting sisi server (server-side) yang dirancang khusus untuk kebutuhan pengembangan web dinamis. PHP dikategorikan sebagai bahasa pemrograman karena seluruh proses eksekusi kodenya dilakukan pada komputer server sebelum hasilnya dikirimkan ke pengguna. Hingga saat ini, PHP tetap menjadi bahasa pemrograman yang paling populer dan banyak digunakan karena memiliki berbagai kelebihan dibandingkan bahasa sejenis, salah satunya adalah efisiensi dalam integrasi dengan berbagai sistem manajemen basis data serta dukungan komunitas yang luas.
+
+Berikut ini kelebihan bahasa pemrograman PHP (Rerung, 2020):
+PHP adalah bahasa multiplatform yang artinya dapat berjalan diberbagai mesin dan system operasi (Linux, Unix, Macintosh, Windows) dan dapat dijalankan secara runtime melalui console serta juga dapat menjalankan perintah-perintah system lainnya.
+PHP bersifat open source yang berarti dapat digunakan oleh siapa saja secara gratis.
+Web Server yang mendukung PHP dapat ditemukan dimana-mana dari mulai apache, IIS, Lighttpd, nginx, hingga Xitami dengan konfigurasi yang relatif mudah dan tidak berbelit-belit, bahkan banyak yang membuat dalam bentuk paket atau package (PHP, MySQL dan WebServer).
+Dalam sisi pengembangan lebih mudah, karena banyaknya milis - milis, komunitas dan developer yang siap membantu dalam pengembangan.
+Dalam sisi pemahamanan, PHP adalah bahasa scriptin yang paling mudah karena memiliki referensi yang banyak. 
+Banyak bertebaran Aplikasi dan Program PHP yang Gratisdan Siap pakai seperti WordPress, PrestaShop, dan lain-lain3.
+Dapat mendukung banvak database, seperti MySQL, Oracle, MS-SQL dst.
+Menurut Rohi (2021), Hyper Text Markup Language atau HTML adalah bahasa standar yang digunakan untuk membuat struktur halaman situs web agar dapat diakses dan ditampilkan melalui web browser (peramban web). HTML berfungsi sebagai kerangka dasar yang menyusun elemen-elemen konten seperti teks, gambar, dan tautan sehingga dapat dipahami oleh perangkat lunak penjelajah internet secara terstruktur.
+2.1.8 Metode Perancangan SDLC
+Menurut Utami, dkk (2024:9) “Software Development Life Cycle (SDLC) ini merupakan standar tahapan kerja yang digunakan tahapan pengembangan yang digunakan dalam membangun sistem informasi agar dapat mengahasilkan sistem dengan kualitas tinggi yang sesuai standar yang diinginkan oleh sponsor proyek”.
+Didalam penerapannya, model SDLC digunakan untuk merancang sistem yang terstruktur (Perancangan sistem Tradisional), kemudian SDLC juga memiliki beberapa tahapan seperti gambar di bawah ini (Wijayanto, dkk : 36-37):
+
+       Sumber : Wijayanto,dkk (2024:36-37).
+Gambar 2.1 : Tahapan SDLC
+Berikut ini adalah Penjelasan dari keenam tahapan SDLC( Wijayanto, dkk. 36-37):
+Planning
+Dalam fase ini, elemen studi yang berkaitan dengan feasibility study atau kelayakan pengembangan sistem lebih ditekankan. Menentukan prioritas teknologi, menentukan tujuan dan ruang lingkup pengembangan, menciptakan dan mengkosolidasikan tim pengemabng, dan menentukan dan menilai strategi.
+Analysis
+Sebuah analisis sistem akan dilakukan mengenai cara software akan dijalankan. hasilnya dapat mencakup kelebihan dan kekurangan sistem, fungsinya, dan perbaikan.
+Design
+Saat ini, tugasnya adalah membuat prototype dan output lainnya, termasuk dokumen yang berisi desain, pola, dan bagian yang diperlukan untuk proyek.
+Implementation
+Tahapan implementasi sistem, di mana anda dapat menerapkan rancangan yang sudah anda buat pada tahapan sebelumnya.
+Testing
+Tahapan ini adalah tahapan untuk dapat melakukan uji coba untuk memastikan bahwa operasi berjalan lancar.
+Maintenance
+Meskipun software sudah jadi tetap harus dijaga dan diawasi agar error dapat diperbaiki secara cepat untuk tujuan perawatan agar data pengguna tetap aman. 
+
+Menurut Rupilele dalam Ahmad dkk. (2022:43) Model atau metode Waterfall yang sering dikenal dengan siklus hidup klasik (classic life cycle), yang menggambarkan pendekatan sistematis dan berurutan (sekuensial) pada pengembangan perangkat lunak, yang dimulai dengan tahapan komunikasi hingga ke penyerahan sistem/perangkat lunak ke pelanggan/pengguna.
+Menurut Kurniawan (2023:17) Model waterfall didefinisikan sebagai rentetan aktivitas proyek dalam SDLC yang dikerjakan dalam bentuk linear dan berurutan. Fase-fase di dalamanya tergantung dari hasil dan dokumentasi pada fase sebelumnya. Model ini juga memiliki pemisah tuga sdan tanggung jawab yang jelas antar-fase. Model Waterfall memiliki keunggulan dari segi struktur, pembagian tugas, dan deliverables yang jelas dan kontinu. Selain itu model ini digolongkan sebagai predictive model karena kejelasan di sisi tugas dan strukturnya membuat sebuah proyek dapat diprediksi pengerjaannya. Dokumentasi proyek yang dihasilkan juga cukup lengkap, detail, dan konsisten sepanjang proyek, sehingga dapat dijadikan acuan bersama.
+
+Tahapan tahapan dari metode waterfall adalah sebagai berikut Fathoroni, dkk (2020:21-22):
+Reguirement Analisis
+Tahap ini pengembang sistem diperlukan komunikasi yang bertujuan untuk memahami perangkat lunak yang diharapkan oleh pengguna dan batasan perangkat lunak tersebut. Informasi ini biasanya dapat diperoleh melalui wawancara, diskusi atau survei langsung. Informasi dianalisis untuk mendapatkan data yang dibutuhkan oleh pengguna.
+System Design
+Spesifikasi kebutuhan dari tahap sebelumnya akan dipelajari dalam fase ini dan desain sistem disiapkan. Desain Sistem membantu dalam menentukan perangkat keras(hardware) dan sistem persyaratan dan juga membantu dalam mendefinisikan arsitektur sistem secara keseluruhan.
+Implementation
+Pada tahap ini, sistem pertama kali dikembangkan di program kecil yang disebut unit, yang terintegrasi dalam tahap selanjutnya. Setiap unirdikembangkan dan diuji untuk fungsionalitas yang disebut sebagai unit testing.
+Integration & Testing
+Seluruh unit yang dikembangkan dalam tahap implementasi diintegrasikan ke dalam sistem setelah pengujian yang dilakukan masing-masing unit. Setelah integrasi seluruh sistem diuji untuk mengecek setiap kegagalan maupun kesalahan.
+Operation & Maintenance
+Tahap akhir dalam modelwarerfall. Perangkat lunak yang sudah jadi, dijalankan serta dilakukan pemeliharaan. Pemeliharaan termasuk dalam memperbaiki kesalahan yang tidak ditemukan pada langkah sebelumnya. Perbaikan implementasi unit sistem dan peningkatan jasa sistem sebagai kebutuhan baru.
+
+2.1.9 Alat Pemodelan
+Menurut Wieringa dalam Effendi dkk. (2024:35) “UML adalah bahasa pemodelan visual standar yang menyediakan cara umum untuk mewakili desain suatu sistem. Ini mencakup berbagai jenis diagram yang dikategorikan ke dalam diagram perilaku, interaksi, dan struktur”.
+Unified Modeling Language (UML) adalah bahasa pemodelan yang digunakan dalam pengembangan perangkat lunak dan sistem informasi. UML dapat digunakan untuk mempresentasikan berbagai aspek dari sistem, termasuk kebutuhan, desain, implementasi, dan pengujian.
+Pemodelan sistem menghasilkan unsur-unsur sebagai berikut (Suradi,2023:27):
+Screen Specification
+Data
+Data Entry Validation Rules
+Navigation
+Front-end Components
+Applicatin Server Components
+Business Object Server Components
+Data Access Components
+Data Models
+
+Penggunaan UML dapat membantu dalam pengembangan perangkat lunak dengan memperjelas komunikasi antar stakeholder, mempermudah pemahaman terhadap sistem yang sedang dikembangkan, dan memudahkan pemeliharaan dan pengembangan sistem di masa depan. Adapun kelebihan dari UML adalah Hasan (2023:150-151):
+Komunikasi yang jelas
+Meningkatkan pemahaman
+Peningkatan efesiensi
+Meningkatkan kualitas perangkat lunak
+Mendukung pengembangan iteratif
+
+2.1.9.1 Use Case Diagram
+Menurut Oktarini dkk. (2024:135-136) “Use Case Diagram adalah diagram untuk memodelkan perilaku suatu sistem yang akan dirancang dengan menggambarkan interaksi antara satu atau lebih aktor yang akan menggunakan sistem tersebut”.
+Menurut Ahmad (2022:71) Diagram Use Case merupakan salah satu dari bermacam-macam bentuk maupun jenis dari UML diagram yang mendeskripsikan atau menceritakan ikatan antar hubungan sistem dengan aktor (Actor). Diagram Use Case menguraikan model atarhubungan antara orang yang
+menggunakan sistem dengan sistemnya.
+
+Menurut Pratama dalam Ahmad (2022:72) Use Case Diagram adalah gambaran grafik dari beberapa atau semua aktor, use case, dan interaksi diantaranya yang memperkenalkan suatu sistem. Use Case Diagram tidak menjelaskan secara detail tentang penggunaan use case, tetapi hanya memberi gambaran singkat hubungan antara use case, aktor, dan sistem. Di dalam use case ini akan diketahui fungsi-fungsi apa saja yang berada pada sistem yang dibuat.
+
+Manfaat diagram yang dibangun mempunyai kegunaan serta faedah, tidak hanya bagi yang membuat akan tetapi bagi orang yang menggunkan (User). Kegunaan dari Diagram Use Case diantaranya Ahmad dkk. (2022:73):
+Menunjukkan rangkaian tindakan kegiatan dengan cara urut dalam sistem.
+Menggambarkan rangkaian tindakan bisnis serta susunan kegiatan pada alur bisnis proses. 
+Terdapat 3 unsur dalam komponen Diagram Use Case, yaitu seperti tertera di bawah ini Ahmad dkk. (2022:73-74):
+System
+Sistem dalam use case diagram menggambarkan dalam bentuk wujud persegi yang memberi batas use case dengan antar hubungan di luar sistem. Sistem pada prinsipnya dapat diberikan penamaan atau label yang telah disesuaikan dengan nama label tersebut.
+Actor
+Aktor mempunyai andil untuk berperan agar use case diagram semakin mudah dipahami, diman peran aktor untuk melakukan interaksi dengan sistem/aplikasi. Peranan aktor menginformasikan atau menyampaikan informasi kepada sistem atau kebalikannya sistem dapat memberikan informasi kepada aktor atau keduanya bersamaan saling memberikan atau menerima informasi.
+
+
+Use Case
+Use Case adalah uraian atau penjelasan mengenai fungsional sistem agar konsumen juga desainer saling memahami atas kebutuhan fungsi-fungsi di dalam sistem yang sedang dirancang atau dikembangkan.
+
+2.1.9.2 Activity Diagram
+Menurut Oktarini dkk. (2024:137) “Activity diagram menggambarkan alur kerja atau aktivitas dari suatu sistem yang ada di dalam software”. Sedangkan menurut Sari (2021:171) Activity diagram menggambarkan berbagai alir aktivitas dalam sistem yang sedang dirancang, bagaimana masing-masing alir berjalan, decision yang mungkin terjadi, dan bagaimana mereka berakhir. Activity diagram juga dapat menggambaran proses parallel yang mungkin terjadi pada beberapa eksekusi. Activity diagram merupakan state diagram khusus, di mana sebagian besar state adalah action dan sebagian besar transisi di-trigger oleh selesainya state sebelumnya (internal processing).
+Acivity Diagram adalah cara lain menggambarkan flow of events. Menunjukkan kontrol aliran dari activity ke activity. Diagram ini mewakili algoritma sekuensial yang kompleks dan pemodelan dengan proses paralel. Berikut kegunaan diagram aktivitas Umar dkk. (2024:77):
+Untuk menjelaskan urutan aktivitas dalam suatu proses.
+Pada dunia bisnis biasanya digunakan untuk pemodelan (menunjukkan urutan proses bisnis).
+Sangat mudah untuk memahami proses sitem secara keseluruhan.
+Mengetahui aktivitas pembuat / pengguna berdasarkan kasus / skema penggunaan yang telah dibuat sebelumnya.
+
+2.1.9.3 Sequence Diagram
+Menurut Oktarini dkk. (2024:136) Sequence diagram adalah diagram UML yang memberikan gambaran koneksi objek yang diatur dalam permintaan waktu. Sequence diagram adalah penggambaran sedikit demi sedikit, termasuk urutan perubahan konsisten yang terjadi harus dilakukan memberikan use case diagram yang sesuai. Sedangkan menurut Satzinger dalam Umar dkk. (2024:83-84) Squence Diagram menggambarkan interaksi antara objek di dalam dan di sekitar sistem (termasuk pengguna, layer, dan lain-lain). Sequence diagram terdiri dari dimensi vertical (waktu) dan dimensi horizontal (objek terkait). Sequence diagram urutan umumnya digunakan untuk menggambarkan skenario atau langkah-langkah yang diambil sebagai respons terhadap suatu peristiwa untuk menghasilkan keluaran tertentu. Selain itu sequence diagram diaplikasikan dalam mendefinisikan masukan dan keluaran serta urutan hubungan antara pengguna dan sistem menurut Nugroho dalam Rusmawan (2019:84) “Sequence Diagram adalah diagram interaksi yang disusun berdasarkan urutan waktu. Setiap diagram sekuensial mempresentasikan satu flow dari beberapa flow di dalam use case”.
+Menurut Vidia D dkk. dalam Rusmawan (2019:84) Sequence Diagram dibuat berdasarkan Activity diagram dan Class diagram. Sequence diagram menggambarkan aliran pesan yang terjadi antar kelas yang dideskripsikan pada Class diagram dengan menggunakan operasi yang dimiliki kelas tersebut. Untuk aliran pesan, Sequence merujuk pada alur sistem Activity diagram yang telah dibuat sebelumnya.
+Menurut Umar dkk. (2024:74) “Tujuan utama pembuatan sequence diagram adalah untuk menentukan urutan kejadian yang dapat menghasilkan hasil yang diinginkan”.
+2.1.9.4 Class Diagram
+Menurut Alda et al dalam Oktarini dkk. (2024:138) “Class diagram menunjukkan akturan dan tanggung jawab entitas yang menentukan perilaku sistem. Selama tahapan perancangan, class diagram berperan dalam struktur kelas yang membentuk arsitektur yang dibuat”. Sedangkan menurut Manurung dan Habibi (2023:26-27) “Class Diagram merupakan struktur pada UML yang berfungsi untuk menggambarkan struktur serta deskripsi dari setiap class, atribut, method, serta hubungan antar objek”.
+Class Diagram menggambarkan struktur suatu sistem dengan mendefinisikan kelas-kelas yang dibuat untuk membentuk siatem. Notasi skema yang ada pada class diagram Umar (2024:80):
+Class
+Mendeskripsikan sekalompok objek yang memiliki properti dan fungsi dari objek tersebut.
+Agreggation
+Menggambarkan hubungan antara dua objek atau lebih dimana satu objek merupakan bagian dari objek lainnya.
+Atribute
+Bagian dari kelas yang berisi tipe data milik turunan kelas tersebut.
+Operation
+Tindakan yang dilakukan suatu kelas.
+Association
+Menggambarkan hubungan antara objek/instance suatu kelas. Suatu hubungan biasanya digambarkan sebagai garis antara dua kelas dengan panah navigasi di salah satu ujungnya.
+2.1.9.5 Diagram Hubungan Entitas
+Menurut Rusmawan (2019:64) “Diagram Hubungan Entitas atau Entity Relationship Diagram merupakan model data berupa notasi grafis dalam pemodelan data konseptual yang menggambarkan hubungan antara penyimpanan”. 
+ERD merupakan diagram yang memperlihatkan entitas-entitas yang terlibat dalam suatu sistem serta hubungan-hubungan (relation) antar entitas. Beberapa komponen-komponen pembentuk model ERD yaitu (Purnama, 2021:35-36):
+Entitas (Entity)
+Entitas merupakan individu yang mewakili sesuatu yang nyata (eksistensinya) dan dapat dibedakan dari sesuatu yang lain. Entitas dapat berupa orang, tempat, benda, peristiwa, atau konsep yang bisa memberikan atau mengandung informasi.
+Atribut (attributes/properties)
+Setiap entitas pasti memiliki atribut yang mendekripsikan karakteristik (properti) dari entitas tersebut.
+Relasi (relationship)
+Relasi menunjukkan adanya hubungan diantara sejumlah entitas yang berasal dari himpunan entitas yang berbeda.
+Kardinalitas/derajat
+Kardinalitas relasi menunjukkan jumlah maksimum entitas yang dapat berelasi dengan entitas pada himpunan entitas lainnya. Kardinalitas relasi yang terjadi di antara dua himpunan entitas dapat berupa:
+One to One (1-1), relasi yang terjadi jika sebuah entry dalam sebuah object data store dihubungkan dengan hanya sebuah entry dalam object data store lainnya
+One to Many (1-M), relasi yang terjadi jika sebuah entry dalam sebuah object data store dihubungkan dengan satu atau lebih entry dalam object data store lainnya.
+Many to Many (M-M), relasi yang terjadi jika satu atau lebih entry dalam sebuah object data store dihubungkan dengan satu atau lebih entry dalam data store.
+Kunci (key), sebuah atribut atau set atribut yang nilainya mengindentifikasi entitas secara unik dalam set entitas.
+2.1.10 Pengujian Black Box
+Menurut Juansen (2024:15) Pengujian Black-box adalah pendekatan pengujian perangkat lunak yang berfokus pada fungsionalitas eksternal sistem tanpa memperhatikan struktur atau detail internalnya. Penguji menganggap sistem sebagai "kotak hitam" di mana mereka hanya mengetahui input yang diberikan dan output yang dihasilkan tanpa mengetahui bagaimana sistem mencapai hasil tersebut.
+
+Adapun Ciri-Ciri Black Box Testinng adalah sebagai berikut (Taufik, dalam Kusuma 2024:185):
+Black box testing berfokus pada kebutuhan fungsional pada software, berdasarkan pada spesifikasi kebutuhan dari software.
+Black box testing melakukan pengujian tanpa pengetahuan detail struktur internal dari sistem atau komponen yang dites juga disebut sebagai behavioral testing, specification-based testing, input/output testing atau functional testing.
+
+Ada pun tujuan dan manfaat Pengujian Black-box dalam pengembangan perangkat lunak adalah sebagai berikut (Juansen 2024, 16-17):
+Tujuan Pengujian Black-box:
+Memastikan bahwa sistem atau perangkat lunak berperilaku sesuai dengan spesifikasi yang telah ditetapkan.
+Menguji fungsionalitas eksternal sistem tanpa memperhatikan implementasi internalnya.
+Mengidentifikasi cacat fungsionalitas atau kesalahan dalam perilaku sistem yang dapat mempengaruhi pengguna atau : tujuan bisnis yang ingin dicapai.
+Memverifikasi apakah sistem dapat menghasilkan output yang benar dan sesuai dengan input yang diberikan.
+
+Manfaat Pengujian Black-box (Juansen, 2024:17):
+
+Mendeteksi kesalahan dan cacat fungsionalitas pada sistem tanpa memerlukan pengetahuan mendalam tentang rincian implementasi internalnya.
+Meningkatkan kualitas dan keandalan sistem dengan memastikan bahwa sistem berperilaku sesuai dengan harapan pengguna dan persyaratan bisnis yang telah ditetapkan.
+Meminimalkan risiko kesalahan dengan mengidentifikasi masalah sebelum sistem diimplementasikan di lingkungan produksi.
+Memberikan kepercayaan kepada pengguna bahwa sistem akan berfungsi dengan baik dan memenuhi kebutuhan mereka.
+Meningkatkan reputasi perusahaan dengan menyediakan produk atau layanan  berkualitas yang bekerja dengan baik.
+
+2.2 Penelitian Terdahulu
+Penelitian terdahulu merupakan kajian penelitian yang dijadikan acuan karena memiliki relevansi dengan penelitian yang sedang dilakukan, serta berfungsi sebagai landasan konseptual dalam penyusunan penelitian ini.
+No
+Nama Penulis
+Judul
+Tahun
+Publikasi
+Hasil Penelitian
+1
+Fahmi 
+Lutfi Hani, Amar P.
+Natasuwarna, dan Herry Surya Kasimo
+Perancangan Sistem Informasi Realisasi Anggaran
+Dana Desa 
+Pada Desa Baning Berbasis Website
+2024
+Prosiding seminar
+ilmiah sistem informasi dan teknologi informasi vol. 13, no.
+2, Februari 2024:48–56
+Penelitian ini bertujuan mewujudkan transparansi pengelolaan dan realisasi anggaran dana desa melalui sistem informasi berbasis website di Desa Baning. Hasilnya, masyarakat lebih mudah mengakses informasi perencanaan dan realisasi anggaran, sementara pihak desa terbantu dalam mempublikasikan informasi serta menerima umpan balik dari masyarakat..
+2
+Hariandi, dan Herry Surya Kasimo, SE., MM.
+Sistem Informasi Persediaan Barang
+Menggunakan Framework Laravel, Studi Kasus: Toko Smile Tech Atk Pontianak
+2023
+Prosiding seminar
+ilmiah sistem informasi dan
+teknologi informasi vol.xii, no. 1, februari 2023:194-202
+Hasil yang didapatkan dari penelitian ini yaitu membuat sebuah perangkat lunak berbasis website persediaan barang pada Toko Smile Tech ATK Pontianak yang
+berfungsi untuk melakukan penginputan data barang masuk dan keluar, mengupdate barangmasuk, menghapus data dan memantau barang masuk dan keluar.
+3
+Dea Erlinda Thendy Salim, dan Sandy Kosasi
+Perancangan Perangkat Lunak Persediaan Berbasis Web Pada Toko Matahari Motor Pontianak
+2022
+VoiceOf Informatics (VOI)
+Terakreditasi SINTA 5, Vol
+11. No 2 Juli 2022
+Tujuan Penelitian ini adalah membantu toko Matahari Motor agar mempermudah
+pengolahan data yang lebih terstruktur dan akurat dalam mengelola persediaan. Penelitian ini mendata data barang, data pelanggan, data supplier, data barang masuk dan keluar. Hasil yang di dapatkan dari penelitian ini yaitu membuat sebuah perangkat lunak yang dapat mengelola data    agar    lebih terstruktur dan tersimpan secara sistematis dalam database.
+4
+Kiki Mulyana1, M Rizki Novriansya h2, Resmi Ranti Rosalina3
+Perancan gan
+sistem informas i
+persediaa n barang berbasis web pada upt
+puskesmas ibrahim adjie
+2022
+Journal of Information Technology and Computer Science (INTECO MS)
+Volume 5
+Nomor 2, Desember 2022 e-ISSN: 2614 1574 p-ISSN: 2621-3249
+Pada penelitian ini akan dibuat sistem yang mampu memberikan informasi untuk laporan persediaan barang secara cepat dan tepat. Hasil penelitian akan menghasilkan sebuah sistempersediaan barang berbasis website yang memberikan kemudahan dalam mengelola persediaan barang.
+5
+Rudi
+Setiyanto, Nunung Nurmaesah, dan Nyai Sri Astuti Rahayu3
+Perancangan
+Sistem Informasi Persediaan Barang Studi Kasusdi Vahncollections
+2019
+JURNAL SISFOTEK GLOBAL
+ISSN: 2088
+– 1762 Vol.
+9 No. 1 / September 2019
+Tujuan penelitian ini adalah membuat Sistem Informasi Persediaan Stok Barang, yang dapat mengelola barang masuk dan keluar, stok barang menggunakan metode prototype serta mengimplementasikan sistem informasi persediaan pada vahncollections. Hasil penelitian ini adalah sebuah sistem persediaan yang efektif dan efisien, sehingga proses pembelian produk ke supplier dapat lebih akurat, pencarian data lebih cepat, serta membantu pemilik usaha dalam proses pengambilan keputusan.
+
+
+
+Kerangka Pemikiran
+Kerangka pemikiran merupakan kerangka utama mengenai teori yang mengarahkan penulis pada topik yang telah ditentukan. Kerangka pemikiran dimulai dengan cara melakukan pemahaman terhadapan permasalahan yang ada, mengumpulkan kebutuhan yang di perlukan guna memecahkan permasalahan, mendefinisikan metode penelitian yang digunakan dalam pengumpulan data. Perancangan mengacu pada tahapan metode SDLC (System Development Life Cycle) dengan teknik pengembangan sistem waterfall, dengan tahapan terdiri dari Planning, Analysis, Design, Implementation, dan Use.
+
+
+
+
+
+
+
+
+
+
+
+Gambar 2.2 Kerangka Pemikiran
+Penelitian ini dimulai dengan merumuskan masalah tentang cara merancang sistem informasi persediaan barang pada UMKM Lookatstore.id Mempawah. Metode yang digunakan adalah System Development Life Cycle (SDLC), yang terdiri dari beberapa tahapan, yaitu tahap perencanaan, tahap perancangan, dan tahap implementasi. Penelitian ini menghasilkan rancangan sistem informasi persediaan untuk UMKM Lookatstore.id Mempawah. Penjelasan kerangka pemikiran pada gambar 2.1 sebagai berikut:
+Penelitian ini bertujuan untuk merancang sebuah sistem informasi yang dapat mempermudah pengelolaan persediaan barang di UMKM Lookatstore.id Mempawah. Sistem ini akan membantu pengelolaan persediaan barang seperti mempermudah proses pencatatan persediaan barang dan menyediakan data persediaan yang akurat, sehingga meminimalisir kesalahan dan dapat mendukung pengambilan keputusan yang lebih baik.
+Permasalahan utama yang diangkat dalam penelitian ini adalah bagaimana menghasilkan sistem informasi persediaan barang yang bermanfaat bagi UMKM Lookatstore.id Mempawa, yang mencakup proses barang masuk, barang keluar, dan persediaan barang.
+Proses pengumpulan data dilakukan dengan observasi, wawancara dan studi dokumentasi. Observasi digunakan untuk memahami proses barang masuk, barang keluar dan penyetokan yang sedang berjalan, wawancara dilakukan untuk mendapatkan informasi langsung dari pihak yang terlibat dalam operasional toko, sedangkan dokumentasi digunakan untuk memperoleh informasi melalui catatan pemesanan barang dan catatan barang keluar di UMKM Lookatstore.id Mempawah.
+Proyek ini menggunakan model pengembangan System Development Life Cycle (SDLC) sebagai metode untuk merancang dan mengimplementasikan sistem. SDLC adalah pendekatan terstruktur yang terdiri dari beberapa tahap yang jelas, dari perencanaan hingga implementasi. Diagram menunjukkan tahapan dalam SDLC yang digunakan dalam proyek ini :
+Planning
+Tahap ini mengidentifikasi masalah, peluang dan tujuan-tujuan yang hendak dicapai. Pada tahap ini penulis mengidentifikasi bebrapa masalah yang terjadi pada proses penjualan barang pada UMKM Lookatstore.id Mempawah.
+Analysis
+Tahap ini digunakan untuk memahami apa yang dibutuhkan dalam sistem, termasuk keputusan yang harus diambil, tindakan yang perlu dilakukan, kondisi yang harus dipenuhi, serta saran atau solusi yang dapat membantu menyelesaikan masalah.
+Design
+Merancang solusi yang dapat memenuhi kebutuhan yang telah dianalisis. Desain ini akan mencakup struktur sistem, antarmuka pengguna, serta bagaimana perancangan sistem informasi berbasis web  akan diproses.
+
+Implementation
+Tahap ini merupakan implementasi atau pembuatan sistem berdasarkan desain yang telah disetujui. Sistem yang sudah selesai dibangun akan diuji untuk memastikan berfungsi sesuai harapan. 
+Testing
+Pengujian dilakukan menggunakan metode Black Box, pengujian ini bertujuan untuk memastikan bahwa setiap fitur dan fungsi pada website penjualan bekerja dengan baik sesuai dengan kebutuhan yang telah ditentukan pada tahap analisis. Pengujian ini mencakup validasi input dan output, serta interaksi pengguna dengan sistem.
+
+
+BAB 3
+GAMBARAN UMUM UMKM LOOKATSTORE.ID MEMPAWAH
+
+3.1Profil UMKM Lookatstore.id Mempawah
+UMKM Lookatstore.id Mempawah merupakan toko fashion wanita yang memiliki toko offline yang berlokasi di Jl. Adiwijaya, Antibar, Mempawah Timur, Kab. Mempawah, Kalimantan Barat. Toko ini telah beroperasi selama 6 tahun hingga saat ini sejak tahun 2020.
+Lookatstore.id berfokus pada penjualan berbagai jenis pakaian wanita, seperti dress, oneset, hijab, serta perlengkapan hijab dengan model yang mengikuti tren fashion terkini. Produk yang ditawarkan berasal dari berbagai merek dan supplier terpercaya, dengan tujuan memberikan pilihan yang beragam bagi konsumen. Selain itu, Lookatstore.id juga melayani pembelian secara langsung di toko fisik maupun secara daring melalui media sosial dan platform digital.
+Tujuan dari UMKM Lookatstore.id Mempawah adalah menjadi toko busana wanita yang menghadirkan produk berkualitas, bergaya modern, dan terjangkau, serta mampu memberikan pelayanan yang baik kepada pelanggan. Dengan berfokus pada kepuasan pelanggan, UMKM ini berkomitmen untuk terus meningkatkan kualitas layanan dan memperluas jangkauan pasar di wilayah Kalimantan Barat.
+
+
+3.2Struktur Organisasi
+Struktur organisasi merupakan elemen penting yang menentukan pola kerja dan alur tanggung jawab dalam suatu usaha. Melalui struktur organisasi, dapat terlihat hubungan kerja antar bagian yang saling berkaitan serta mendukung satu sama lain dalam menjalankan kegiatan operasional. Struktur ini juga menjelaskan pembagian tugas, wewenang, dan tanggung jawab masing-masing bagian sesuai dengan fungsi dan spesialisasinya, sehingga tujuan organisasi dapat tercapai secara efektif dan efisien.
+UMKM Lookatstore.id Mempawah menerapkan struktur organisasi berbentuk linier, di mana setiap pegawai memiliki atasan langsung yang jelas. Pola ini menjadikan rantai komando lebih sederhana, memudahkan koordinasi antarbagian, serta mempercepat proses pengambilan keputusan dan pelaksanaan tugas. Struktur organisasi pada UMKM Lookatstore.id Mempawah dapat dilihat pada bagan struktur organisasi pada Gambar 3.1 berikut ini.
+
+Sumber: UMKM Lookatstore.id Mempawah 2025
+Gambar 3.1 Struktur Organisasi
+3.3Uraian dan Tanggung Jawab
+Berdasarkan struktur organisasi yang telah dijelaskan sebelumnya, berikut merupakan uraian tugas dan tanggung jawab pada UMKM Lookatstore.id Mempawah:
+Pemilik
+Pemilik UMKM Lookatstore.id Mempawah bertugas dalam memastikan kelancaran operasional di UMKM Lookatstore.id Mempawah, melakukan pengawasan dan pemeriksaan mengenai kondisi UMKM, dan memantau kinerja setiap karyawan.
+Bagian Keuangan
+Bagian keuangan memiliki tugas untuk mencatat setiap transaksi keuangan, baik pemasukan maupun pengeluaran, serta menyusun laporan keuangan secara berkala sebagai bahan evaluasi kinerja.
+Admin
+Admin bertugas mengelola data barang masuk dan keluar, memastikan persediaan selalu tersedia dengan jumlah yang sesuai, serta membuat laporan persediaan untuk mendukung pengambilan keputusan oleh pemilik.
+Kasir
+Kasir bertanggung jawab atas proses transaksi penjualan, mulai dari melayani pembayaran pelanggan, memberikan nota pembelian, hingga menyusun laporan penjualan harian. Selain itu, kasir juga harus memastikan ketepatan jumlah uang masuk agar sesuai dengan total transaksi yang terjadi setiap hari.
+3.4Tata Laksana Sistem Berjalan
+Pada bagian ini akan diuraikan tata laksana sistem berjalannya UMKM Lookatstore.id Mempawah.
+3.4.1 Proses Pemesanan Barang
+Proses pemesanan persediaan barang pada UMKM Lookatstore.id menggunakan langkah sebagai berikut:
+Admin melakukan pengecekan pada etalase toko dan gudang untuk mengetahui persediaan barang yang menipis.
+Barang-barang yang persediaannya menipis kemudian dicatat dalam daftar pemesanan, yang berisi informasi nama barang dan jumlah barang yang akan dipesan
+Bagian Keuangan melakukan pemeriksaan dan memvalidasi daftar belanja persediaan barang pada UMKM Lookatstore.id
+Daftar belanja yang sudah divalidasi oleh keuangan diserahkan kepada pemilik sebagai laporan belanja persediaan barang.
+Daftar belanja kemudian diserahkan kembali kepada admin toko untuk dilakukan pemesanan barang kepada suplier.
+Diagram alir dokumen proses pemesanan persediaan barang pada UMKM Lookatstore.id Mempawah mengacu pada Gambar 3.2 berikut ini
+Gambar 3.2 Diagram Alir Proses Pemesanan Persediaan Barang
+Permasalahan yang terjadi pada proses pencatatan laporan penerimaan barang masuk adalah proses pencatatan data barang masih kurang efektif sehingga berpotensi menghambat pengelolaan persediaan barang. Kondisi tersebut dapat menyebabkan keterlambatan dalam penginputan data, kesalahan pencatatan jumlah barang, serta ketidaksesuaian antara stok fisik dengan data persediaan yang tersedia. Selain itu, proses penyampaian laporan kepada bagian keuangan memerlukan waktu yang lebih lama sehingga dapat memperlambat proses pemeriksaan dan validasi data barang masuk.
+3.4.2 Proses Pendataan Barang Masuk
+Proses pendataan barang masuk di UMKM Lookatstore.id Mempawah mencakup tahapan-tahapan sebagai berikut:
+Admin toko menerima barang masuk dari supplier dan memeriksa kesesuaian antara barang yang datang dengan daftar pemesanan yang telah dibuat sebelumnya.
+Setelah proses pemeriksaan, admin mencatat data barang masuk.
+Admin toko memberikan laporan penerimaan barang kepada bagian keuangan UMKM Lookatstore.id.
+Bagian keuangan melakukan pengecekan data barang dan barang fisik.
+Bagian Keuangan memberikan laporan penerimaan barang masuk kepada pemilik.
+Diagram alir dokumen proses pendataan barang masuk pada UMKM Lookatstore.id mengacu pada Gambar 3.3 berikut ini.
+
+Gambar 3.3 Diagram Alir Proses Pendataan Barang Masuk
+Permasalahan yang terjadi pada proses pencatatan laporan penerimaan barang masuk adalah proses pendataan barang masih kurang efektif sehingga berpotensi menghambat pengelolaan persediaan barang pada UMKM Lookatstore.id. Kondisi tersebut dapat menyebabkan keterlambatan dalam pencatatan data barang masuk, terjadinya kesalahan pencatatan jumlah barang, serta ketidaksesuaian antara data persediaan dengan kondisi barang fisik yang tersedia. Selain itu, proses penyampaian laporan penerimaan barang kepada bagian keuangan dan pemilik memerlukan waktu yang lebih lama sehingga dapat memperlambat proses pemeriksaan dan pelaporan data barang masuk.
+3.4.3 Proses Pendataan Barang Keluar
+Proses pendataan barang keluar pada UMKM Lookatstore.id dilakukan sebagai berikut.
+Admin melakukan pemeriksaan terhadap data persediaan barang di toko dan gudang untuk memastikan jumlah barang sesuai dengan hasil penjualan.
+Admin membuat laporan barang keluar.
+Admin memberikan laporan barang keluar kepada Bagian Keuangan.
+Bagian Keuangan menerima laporan data barang keluar, kemudian dilakukan pengecekkan kesesuaian jumlah pemasukan atau pendapatan dengan barang keluar.
+Bagian Keuangan melaporkan data barang keluar kepada pemilik UMKM.
+Pemilik menerima laporan data barang keluar.
+Diagram alir dokumen proses pendataan berang keluar pada UMKM Lookatstore.id Mempawah mengacu pada Gambar 3.4 di bawah ini.
+Gambar 3.4 Diagram Alir Proses Pendataan Barang Keluar
+Permasalahan yang terjadi pada proses pencatatan laporan barang keluar adalah proses pendataan barang keluar masih kurang efektif sehingga berpotensi menghambat pengelolaan data persediaan barang pada UMKM Lookatstore.id. Kondisi tersebut dapat menyebabkan keterlambatan dalam pencatatan data barang keluar, kesalahan dalam pencocokan jumlah barang dengan hasil penjualan, serta terjadinya ketidaksesuaian antara data stok barang dengan kondisi persediaan yang tersedia. Selain itu, proses pelaporan data barang keluar kepada bagian keuangan dan pemilik memerlukan waktu yang lebih lama sehingga dapat memperlambat proses pemeriksaan dan pelaporan data barang keluar.
+
+BAB 4
+METODOLOGI PENELITIAN
+4.1 Bentuk dan Metode Penelitian
+Bentuk penelitian yang digunakan dalam penelitian ini adalah studi kasus (case study). Pendekatan studi kasus digunakan untuk melakukan penyelidikan secara mendalam terhadap suatu unit analisis yang spesifik, yaitu UMKM Baju Lookatstore.id Mempawah sebagai objek tunggal penelitian. Studi kasus memungkinkan peneliti untuk memahami secara komprehensif permasalahan manajerial, sistem kerja, serta proses operasional yang sedang berjalan, khususnya dalam hal pengelolaan persediaan barang dan pencatatan transaksi penjualan. Pendekatan ini relevan karena penelitian bertujuan menghasilkan solusi berbasis sistem informasi yang sesuai dengan kebutuhan dan karakteristik toko dalam konteks nyata yang terbatas ruang dan waktu.
+Metode penelitian yang digunakan adalah Design Science Research Method (DSRM). Metode ini berfokus pada penciptaan dan evaluasi artefak dalam hal ini, sebuah sistem informasi persediaan barang berbasis web yang dirancang untuk memecahkan permasalahan nyata yang dihadapi oleh UMKM Lookatstore.id. Design Science Research Method dikembangkan oleh Hevner et al. (2004) dan Peffers et al. (2007), dan terdiri atas enam tahapan utama, yaitu:
+Identifikasi Masalah atau Peluang
+Tahap ini bertujuan untuk menemukan dan memahami permasalahan utama atau peluang perbaikan yang dapat diselesaikan melalui penerapan solusi berbasis teknologi informasi. Proses identifikasi dilakukan melalui kegiatan seperti studi literatur, observasi langsung di lapangan, wawancara dengan pihak-pihak terkait, serta interaksi dengan pemangku kepentingan yang memahami proses operasional. Hasil dari tahap ini menjadi dasar dalam merumuskan kebutuhan sistem yang relevan dengan konteks permasalahan.
+Definisi Tujuan dan Kriteria Keberhasilan
+Tahap ini berfokus pada penetapan sasaran yang ingin dicapai oleh solusi yang dikembangkan, beserta indikator keberhasilan yang digunakan untuk menilai efektivitasnya. Tujuan yang dirumuskan harus bersifat spesifik, terukur, dan dapat diimplementasikan dalam konteks nyata. Kriteria keberhasilan biasanya mencakup peningkatan efisiensi, ketepatan data, serta kemampuan sistem dalam menyelesaikan permasalahan yang telah diidentifikasi sebelumnya.
+Desain dan Pengembangan
+Pada tahap ini dilakukan proses perancangan serta pembangunan artefak berupa solusi teknologi yang dirancang untuk menjawab kebutuhan pengguna. Artefak dapat berupa model, prototipe, sistem, atau aplikasi yang dikembangkan berdasarkan tujuan yang telah ditetapkan sebelumnya. Fokus utama tahap ini adalah mengubah kebutuhan pengguna dan hasil analisis masalah menjadi rancangan sistem yang dapat diimplementasikan dan diuji secara fungsional.
+Demonstrasi
+Tahap demonstrasi dilakukan dengan cara menampilkan atau menguji artefak yang telah dikembangkan untuk menyelesaikan satu atau lebih contoh kasus yang nyata. Melalui proses ini, efektivitas awal artefak diuji dalam kondisi yang menyerupai lingkungan penggunaan sebenarnya. Demonstrasi dapat dilakukan dalam bentuk simulasi, pengujian langsung, studi kasus, atau aktivitas lain yang memungkinkan peneliti mengamati kinerja sistem secara empiris.
+Evaluasi
+Tahap ini bertujuan untuk menilai sejauh mana artefak yang dikembangkan telah mencapai tujuan penelitian dan memenuhi kriteria keberhasilan yang telah ditentukan sebelumnya. Evaluasi dilakukan dengan menggunakan metode yang sesuai dengan konteks penelitian, seperti uji fungsional, uji performa, pengujian pengguna (user testing), atau analisis kesesuaian terhadap kebutuhan sistem. Hasil evaluasi menjadi dasar untuk melakukan perbaikan atau penyempurnaan sistem.
+Komunikasi
+Tahap terakhir adalah mendiseminasikan hasil penelitian, baik kepada kalangan akademik maupun praktisi. Hasil penelitian disajikan dalam bentuk laporan, publikasi ilmiah, presentasi, atau demonstrasi sistem. Tujuan tahap ini adalah untuk menyebarluaskan pengetahuan baru yang diperoleh dari penelitian serta memberikan kontribusi terhadap pengembangan ilmu pengetahuan dan penerapan praktis dalam bidang Design Science Research.
+Tahapan-tahapan DSRM yang digunakan dalam penelitian ini dapat dilihat pada Gambar 4.1 berikut:
+Sumber: Hevner dan Maedche, 2020
+Gambar 4.1 Tahapan Metode Design Science Research (DSRM)
+4.2 Metode Pengumpulan Data
+Penelitian ini menggunakan beberapa metode pengumpulan data untuk memperoleh informasi yang akurat dan relevan terkait kondisi aktual dan kebutuhan sistem di UMKM Lookatstore.id Mempawah, yaitu melalui wawancara dan observasi.
+ Data Primer
+Data primer diperoleh langsung dari hasil observasi dan wawancara dengan pihak UMKM. Data ini mencakup informasi mengenai alur bisnis UMKM, jenis dan jumlah barang yang dijual, proses pencatatan persediaan, serta kendala operasional yang terjadi. Observasi dilakukan untuk melihat secara langsung proses penerimaan dan penjualan barang, sedangkan wawancara dilakukan untuk menggali kebutuhan sistem dari perspektif pengguna utama (pemilik dan admin).
+Data Sekunder
+Data sekunder diperoleh dari dokumen dan arsip yang dimiliki oleh UMKM, seperti profil usaha, struktur organisasi, catatan penjualan, daftar persediaan barang, laporan pembelian dari pemasok, serta rekap data transaksi bulanan. Data ini digunakan untuk melengkapi dan memvalidasi temuan dari data primer, serta membantu proses perancangan sistem agar sesuai dengan kebutuhan nyata di lapangan.
+
+4.3 Teknik Pengumpulan Data
+Teknik pengumpulan data yang digunakan dalam penelitian ini bertujuan untuk memperoleh gambaran faktual dan akurat mengenai kondisi sistem pengelolaan persediaan barang di UMKM Lookatstore.id. Teknik yang digunakan meliputi:
+Observasi
+Observasi dilakukan secara langsung terhadap proses operasional UMKM, terutama pada aktivitas pencatatan persediaan, transaksi penjualan, dan penerimaan barang baru.
+Peneliti melakukan observasi non-partisipatif, yakni hanya mengamati tanpa terlibat langsung dalam kegiatan UMKM. Observasi dilakukan selama periode Agustus hingga November 2024, sebanyak dua kali kunjungan per minggu. Hasil observasi digunakan untuk memahami alur sistem berjalan dan mengidentifikasi bagian yang perlu diotomatisasi melalui sistem informasi.
+Wawancara
+Wawancara dilakukan dengan pemilik UMKM dan admin menggunakan metode semi-terstruktur, agar peneliti dapat menggali informasi mendalam sekaligus menyesuaikan pertanyaan dengan konteks percakapan. Pertanyaan wawancara mencakup topik-topik seperti proses pemesanan dan penerimaan barang, pencatatan persediaan dan transaksi penjualan, sistem pelaporan yang digunakan saat ini, kendala yang sering dihadapi dalam mengelola persediaan. Alat bantu yang digunakan antara lain buku catatan, perekam suara, dan kamera untuk mendokumentasikan hasil wawancara dan kondisi UMKM.
+Studi Dokumentasi
+Studi dokumentasi dilakukan secara sistematis dengan menghimpun data digital dari aplikasi pencatatan personal (iOS Notes) yang digunakan oleh pengelola UMKM sebagai instrumen inventarisasi utama. Dokumen digital ini mencakup catatan persediaan barang masuk, daftar persediaan yang tersedia, serta rincian transaksi harian yang dicatat secara manual secara ad-hoc. Meskipun bersifat informal, data dari aplikasi ini merupakan sumber primer untuk memahami pola perputaran barang dan format data yang selama ini dianggap paling aksesibel oleh pengguna. Selain data digital, peneliti juga mengumpulkan dokumen pendukung lainnya seperti faktur pembelian fisik dari pemasok dan nota penjualan manual guna memperkuat validitas data persediaan.
+
+4.4 User Acceptance Test
+User Acceptance Testing (UAT) adalah fase pengujian sistem yang dilakukan untuk memastikan bahwa Sistem Informasi Persediaan yang dikembangkan memenuhi kebutuhan pengguna dan dapat diterima untuk digunakan dalam operasional UMKM Lookatstore.id Mempawah. Pengujian ini berfokus pada partisipasi langsung pengguna akhir dalam menilai kesesuaian fungsi sistem untuk proses bisnis saat ini.
+Implementasi UAT dilakukan setelah semua fungsi utama sistem telah dikembangkan dan diuji secara fungsional. Pengujian melibatkan pengguna yang memiliki peran langsung dalam manajemen persediaan, yaitu pemilik dan manajer UMKM. Pada tahap ini, pengguna diminta untuk menguji semua fungsi sistem, seperti mengelola data persediaan, mencatat barang masuk dan keluar, mengambil data, dan menghasilkan laporan persediaan.
+Metode pengujian dilakukan menggunakan kasus uji yang telah dikembangkan berdasarkan persyaratan sistem dan alur kerja UMKM. Setiap skenario pengujian dirancang untuk mewakili aktivitas operasional tipikal di UMKM Lookatstore.id Mempawah. Pengguna mengevaluasi hasil pengujian berdasarkan indikator keberhasilan operasional, kemudahan penggunaan, kejelasan layar, dan kesesuaian sistem untuk kebutuhan operasional UMKM.
+Hasil Uji Penerimaan Pengguna (User Acceptance Test/UAT) digunakan sebagai dasar untuk menilai tingkat penerimaan pengguna terhadap sistem yang dikembangkan. Jika semua fungsi sistem bekerja dengan baik dan memenuhi kebutuhan pengguna, sistem tersebut dianggap layak untuk diimplementasikan. Sebaliknya, jika ditemukan hambatan atau inkonsistensi, perbaikan dan peningkatan dilakukan pada sistem berdasarkan umpan balik pengguna.
+
+
+DAFTAR PUSTAKA
+
+Adam Saputra., 2019, Buku Sakti Html, Css & Javascript: Pemrograman Web Itu Gampang, Anak Hebat Indonesia.
+Adam, M. (2024). Perancangan Sistem Informasi Berbasis Web Untuk Menunjang Analisis Bisnis Pada Toko Retail (Doctoral dissertation, Universitas Islam Indonesia).
+Ahmad, Nazaruddin., Krisnanik, Erly., Rupilele, Frits, Gerit J., Muliawati, Anita., Syamsiyah, Nur., Kraugusteeliana, Kraugusteeliana., Cahyono, Bagus D., Sriyeni, Yesi., Kristanto, Titus., Irwanto, Irwanto., Guntoro, Guntoro., 2022, Analisa & Perancangan Sistem Informasi Berorientasi Objek, Widina Media Utama, Bandung.
+Aji, I. S., Kharisma, A. P., & Akbar, M. A. (2023). Pengembangan Aplikasi Perangkat Bergerak Sistem Informasi dan Manajemen Bank Sampah Kota Batu berbasis Android (Studi Kasus: Bank Sampah Teratai Putih). Jurnal Pengembangan Teknologi Informasi dan Ilmu Komputer, 7(2), 515-524.
+Anugerah, D. A., & Kosasi, S. (2024). Penerapan Next. js dan GraphQL dalam Pengembangan Mobile Web Sistem Informasi Manajemen Puskesmas. CSRID (Computer Science Research and Its Development Journal), 16(3), 01-12.
+Anugrah, R. E., Saputra, Y. A., & Haryono, W. (2024). Perancangan Sistem Inventory Berbasis Web untuk Optimalisasi Manajemen Persediaan Barang di PT Bumi Daya Plaza. Bridge: Jurnal publikasi Sistem Informasi dan Telekomunikasi, 2(4), 342-363.
+Arifin, Oki., Ikhsan, Fathurrahman K., Putra, Randi F., Utami, Fitriani N., Wardana, Ari K., Ginting Erika F., Defriani, Meriska., Syaharuddin, Achmad Z., Kusumaningtyas, Kartikadyota., Widyawati, Dewi K, Kurniawan, Henry., Kurniawan Haris., 2023, Dasar Pemrograman : Teori & Aplikasi, Sonpedia Publishing Indonesia, Jambi.
+Effendi, Diana., Munawar, Zen., Syahidin, Yuda., Nugraha., Hasnawi, Mardiyyah., Sipahutar, Lahmudin., Nasution, Fitri P., Rahman, Maulia., Muliantara, Agus., Hidayat, Kemas, Muhammad W., Erwanto, Muhammad., Ilyas, Ridwan., Harori, Isni, Anisah P., Sufa’atin., Tay, En., 2024, Panduan Dalam Pengembangan Perangkat Lunak, Kaizen Media Publishing, Bandung.
+Eunike, Agustina., Setyanto, Nasir W., Yuniarti, Rahmi., Hamdala, Ihwan., Lukodono, Rio P., Fanani, Angga A. (2021), Perencanaan Produksi Dan Pengendalian Persediaan, Edisi Revisi, Ub Press, Malang.
+Fathoroni, Annisa., Fatonah, Nuraini S., Andarsyah, Roni., Riza, Noviana., 2020, Buku Tutorial Sistem Pendukung Keputusan Penilaian Kinerja Dosen Menggunakan Metode 360 Degree Feedback, Kreatif Industri Nusantara, Bandung.
+Hardi, M., & Meisak, D. (2022). Perancangan Sistem Informasi Manajemen Stok Dan Penjualan Pada Toko Oli Joni. Jurnal Manajemen Teknologi Dan Sistem Informasi (JMS), 2(2), 266-274.
+Hariyono, Sigitta., Kuntarto, Guson P., Sudipa, I, Gede I., Juliandy, Carles., Kharisma, Lalu, Puji I., Hartati, Sri., Aryuni, Mediana., Lestari, Wulan S., Saragih, Yuni M., Ulina, Mustika., 2023, Buku Ajar Pengantar Basis Data, Sonpedia Publishing Indonesia, Jambi.
+Hasan, Nur F., Wati, Vera., Sapulette, Shella G., Supadmini, Sri., Wartono., Limba, Franco B., Isfaatun, Eliya., Purwanto., Tarigan, Wico J., Suparman, Ade., 2023, Dasar Analisa Perancangan Sistem Informasi, Cendikia Mulia Mandiri, Batam.
+Hatta, Heliza R., Chafid, Nurul., Rusminingsih, Ni K., Pratomo, Arief B., Syamsuddin., Saptadi, Tri S., Mawuntu, Denny J., Ambarwati, Sri., Susanto, Adi., Toyo, Jama., 2023, Analisa Perancangan Sistem Informasi, Cendikia Mulia Mandiri, Batam.
+Ihksan, M., Jayanti, D., & Rahmawati, E. (2023). Perancangan Sistem Informasi Data Penjualan Barang Berbasis Web Menggunakan PHP dan MySQL. Jurnal Ilmu Komputer dan Sistem Informasi, 3(1), 1–8.
+Ihksan, M., Jayanti, D., & Rahmawati, E. (2023). Perancangan Sistem Informasi Data Penjualan Barang Berbasis Web Menggunakan PHP dan MySQL. Jurnal Ilmu Komputer dan Sistem Informasi, 3(1), 1–8.
+Jannah, Miftahul., Sarwandi., Creative Cyber., 2019, Mahir Bahasa Pemrograman Php, Elex Media Komputindo, Jakarta.
+Juansen, Monsya., Alam, Rg G., Prihandoko., 2024, Pengujian Dan Implementasi Sistem Informasi, Budi Utama, Yogyakarta.
+Julius, J., Lianto, R., Yanto, H., & Sulastri, K. (2024). Perangkat Lunak Persediaan Barang Framework Codeigniter Pada Toko Kembang Api. In SISITI: Seminar Ilmiah Sistem Informasi dan Teknologi Informasi (Vol. 13, No. 2, pp. 70-77).
+Kurniawan, Rahmat., 2023, Kombinasi Agile & Waterfall Model Pengembangan Aplikasi Design Driven Development, Bintang Semesta Media, Yogyakarta.
+Kusuma, Aniek, S., Parwati, Ni N., Tegeh, I M., Sudarma, I K., 2024, Buku Ajar  Analisis Desain Sistem Informasi Berbasis Tri Hita Karana, Sonpedia Publishing Indonesia, Jambi.
+Manurung, A. R., & Habibi, R. (2023). Perancangan Sistem Informasi Pengelolaan Data Inventaris Berbasis Web Menggunakan Unified Modeling Language (UML). Jurnal Sistem Informasi dan Teknologi, 5(1), 23–32.
+Namruddin, Respaty., Basalamah, Abdullah., Ali, Muhammad, Zainal A., Syarifuddin, Andi., Alam, Syamsu., Wardhani, Nurilmiyanti., Abdurrahman, Tanridio, Silviati D., 2023, Belajar Database Dengan Mudah Menggunakan Mysql, Tohar Media, Makkasar.
+Nirsal, N., Roji, M. F., Syam, S., Selviana, R., Widianto, A., Gunawan, I. M. A. O., Arsana, I. N. A., Sutoyo, M. N., Kurniadi, W., Sari, I. K., & Kasma, S. (2025). Buku ajar analisis dan perancangan sistem. PT. Sonpedia Publishing Indonesia.
+Oktarini, N. P., Pradnyana, I. M. A., & Suryantara, I. G. A. (2024). Perancangan Sistem Informasi Peminjaman Barang Berbasis Web Menggunakan Unified Modeling Language (UML). Jurnal Teknologi Informasi dan Sistem Komputer, 12(2), 130–140
+Permatasadi, F., Rachmadi, A., & Wulandari, R. (2024). Analisis dan Perancangan Basis Data untuk Sistem Informasi Akademik Berbasis Web. Jurnal Teknologi dan Sistem Informasi, 12(1), 55–65.
+Prameswari, Indira A., Noviyanti, Yopi., Susilowati, Tri., 2024, Pengantar Sistem Informasi, Nem, Jawa Tengah.
+Prehanto, Dedy R., 2020, Buku Ajar Konsep Sistem Informasi, Scopindo Media Pustaka, Surabaya.
+Purnama, I. (2021). Analisis dan Perancangan Basis Data: Pendekatan Model Konseptual dan Logikal. Yogyakarta: Deepublish.
+Rukmana, Arief Y., Rahman, Rakhmadi., Afriyadi, Hery., Moeis, Dikwan., Setiawan, Zunan., Subchan, Nur., Magdalena, Lena., Singadji, Marcello., Rayeb, Augury E., Kusuma, Agus, Tommy, Adi P. (2023), Pengantar Sistem Informasi : Panduan Praktis Pengenalan Sistem Informasi & Penerapannya, Sonpedia Publishing Indonesia, Jambi.
+Rura, O. S., & Ardiansyah, R. (2024). Rancang Bangun Sistem Informasi Inventory Barang Berbasis Web (Studi Kasus Toko Dina Beauty Care). Arcitech J. Comput. Sci. Artif. Intell, 3(2), 81.
+Rusmawan, Uus., 2019, Teknik Penulisan Tugas Akhir Dan Skripsi Pemrograman, Elex Media Komputindo, Jakarta.
+Santi, Indyah H., 2020, Analisa Perancangan Sistem, Nem, Jawa Tengah.
+Sari, Indah P., 2021, Buku Ajar Rekayasa Perangkat Lunak, Umsu Press, Medan.
+Sidik, A., Mariana, A. R., & Anggraeny, A. R. (2018). Perancangan Sistem Informasi E-Recruitment Guru Studi Kasus di SMK Kusuma Bangsa. Jurnal Sisfotek Global, 8(1).
+Supartha, I, Kadek, Dwi G., Elly, Elly., Arifin, Nofri Y., Ridwan, Achmad., Rivanthio, Tubagus R, Santika, Putu P., Hita, Hita., Primasari, Dewi. (2023), Buku Ajar Analisa Perancangan Sistem, Sonpedia Publishing Indonesia, Jambi.
+Supono., Putratama, Virdiandry., 2016, Pemrograman Web Dengan Menggunakan Php Dan Framework Codeiginiter, Budi Utama, Yogyakarta.
+Suradi, 2023, Pemodelan Sistem (Sebuah Pengantar), Tohar Media. Sutabri Tata., 2012, Konsep Sistem Informasi, Andi, Yogyakarta.
+Sutabri Tata. (2012),  Konsep Sistem Informasi, Andi, Yogyakarta.
+Syakur, M. A., Anamisa, D. R., & Yusuf, M. (2017). Sistem Informasi: Update Konsep, Riset, dan Perkembangan. Media Nusa Creative.
+Umar, Najirah., Setiawan, Hermawan., Yutanto, Hariadi., Sujarwo, Sujarwo., Sanjaya, Kadek O., Minarni, Prilian A., Singadji, Marcello., Padang, Semuel Y., Wattimena, Fegie Y., 2024, Buku Ajar Rekayasa Perangkat Lunak, Sonpedia Publishing Indonesia, Jambi.
+Utami, N., Prasetyo, A., & Handayani, S. (2024). Penerapan Metode SDLC dalam Pengembangan Sistem Informasi Pengelolaan Proyek Berbasis Web. Jurnal Sistem Informasi dan Teknologi, 8(1), 1–12.
+Widarti, E., Joosten, J., Pratiwi, P. Y., Pradnyana, G. A., Indradewi, I. G. A. A. D., Kamilah, N., ... & Sepriano, S. (2024). Buku Ajar Pengantar Sistem Informasi. PT. Sonpedia Publishing Indonesia.
+Wijayanto, Sena., Putra, Riko A., Darmansah., Aranski, Alvendo W., Astiti, Sarah., 2024, Buku Ajar Analisa Perancangan Sistem Informasi, Sonpedia Publishing Indonesia, Jambi.
+Wijayanto, Sena., Putra, Riko A., Darmansah., Aranski, Alvendo W., Astiti, Sarah., 2024, Buku Ajar Analisa Perancangan Sistem Informasi, Sonpedia Publishing Indonesia, Jambi.
+Pandansari, F., & Prastiantomo, G. A., 2025, Pengembangan dan penerapan sistem informasi berbasis web dengan framework Django untuk meningkatkan tata kelola rintisan koperasi. Educate: Journal of Information Technology and Science.
+Nurdiansyah, R., Suryawan, S. H., & lainnya. (2024). Pembuatan sistem aplikasi electronic voting (E-Voting) berbasis web dengan pendekatan metode waterfall. Jurnal Informatika dan Teknologi Informasi.

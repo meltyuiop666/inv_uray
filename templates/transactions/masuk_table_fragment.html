@@ -1,0 +1,62 @@
+<table class="w-full text-left text-sm">
+    <thead class="text-xs text-slate-400 uppercase bg-slate-50 border-b border-slate-150">
+        <tr>
+            <th class="px-6 py-4">Tanggal</th>
+            <th class="px-6 py-4">Nama Produk</th>
+            <th class="px-6 py-4">Kode Barang</th>
+            <th class="px-6 py-4">Supplier</th>
+            <th class="px-6 py-4 text-center">Jumlah Masuk</th>
+            <th class="px-6 py-4">Keterangan</th>
+            <th class="px-6 py-4 text-center no-print">Aksi</th>
+        </tr>
+    </thead>
+    <tbody class="divide-y divide-slate-100">
+        {% for item in items %}
+        <tr class="hover:bg-slate-50/50 transition-colors">
+            <td class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap">{{ item.tanggal|date:"d M Y" }}</td>
+            <td class="px-6 py-4 font-semibold text-slate-950">{{ item.barang.nama_produk }}</td>
+            <td class="px-6 py-4 font-mono font-medium text-slate-600">{{ item.barang.kode_barang }}</td>
+            <td class="px-6 py-4 text-slate-600 font-medium">{{ item.supplier }}</td>
+            <td class="px-6 py-4 text-center">
+                <span class="px-2.5 py-1 text-xs rounded-full font-bold bg-emerald-50 text-emerald-700">
+                    +{{ item.jumlah }} {{ item.barang.satuan }}
+                </span>
+            </td>
+            <td class="px-6 py-4 text-slate-500 text-xs">
+                {% if item.keterangan %}{{ item.keterangan }}{% else %}-{% endif %}
+            </td>
+            <td class="px-6 py-4 text-center no-print whitespace-nowrap">
+                <div class="inline-flex items-center space-x-2">
+                    <button hx-get="{% url 'transactions:masuk_update' item.pk %}"
+                            hx-target="#modal-container"
+                            class="p-1.5 text-slate-400 hover:text-brand-600 rounded-lg hover:bg-brand-50 transition-colors cursor-pointer"
+                            title="Ubah">
+                        <i data-lucide="edit" class="w-4 h-4"></i>
+                    </button>
+                    <button hx-get="{% url 'transactions:masuk_delete' item.pk %}"
+                            hx-target="#modal-container"
+                            class="p-1.5 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition-colors cursor-pointer"
+                            title="Hapus">
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="7" class="px-6 py-12 text-center text-slate-400">
+                <div class="flex flex-col items-center justify-center">
+                    <i data-lucide="inbox" class="w-12 h-12 text-slate-300 mb-3"></i>
+                    <p class="text-base font-semibold text-slate-600">Tidak ada riwayat barang masuk</p>
+                    <p class="text-xs">Coba ubah kriteria pencarian/tanggal atau catat penerimaan baru.</p>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<script>
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+</script>

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Master Kategori - Lookatstore.id Inventory{% endblock %}
+{% block header_title %}Master Kategori{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- Action and Filter Bar -->
+    <div class="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            
+            <!-- Filters Form -->
+            <form class="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-4" hx-get="{% url 'inventory:kategori_list' %}" hx-target="#kategori-table" hx-trigger="submit">
+                <!-- Search Text -->
+                <div class="relative sm:col-span-2">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                        <i data-lucide="search" class="w-4 h-4"></i>
+                    </span>
+                    <input type="text" name="q" id="kategori-search-input" value="{{ query }}"
+                           hx-get="{% url 'inventory:kategori_list' %}"
+                           hx-trigger="keyup changed delay:300ms, search"
+                           hx-target="#kategori-table"
+                           class="block w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-brand-500 focus:ring-4 focus:ring-brand-100 transition-all text-sm"
+                           placeholder="Cari nama kategori...">
+                </div>
+            </form>
+            
+            <!-- Create Button -->
+            <div class="flex-shrink-0 flex space-x-2">
+                <button hx-get="{% url 'inventory:kategori_create' %}"
+                        hx-target="#modal-container"
+                        class="px-4 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm rounded-xl shadow-md shadow-brand-600/10 hover:shadow-brand-600/20 active:scale-[0.98] transition-all cursor-pointer flex items-center">
+                    <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                    Tambah Kategori
+                </button>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Live Data Table Card -->
+    <div class="bg-white border border-slate-100 rounded-3xl shadow-sm overflow-hidden" 
+         id="kategori-table"
+         hx-get="{% url 'inventory:kategori_list' %}"
+         hx-trigger="kategoriListChanged from:body"
+         hx-include="#kategori-search-input">
+        {% include 'inventory/kategori_table_fragment.html' %}
+    </div>
+</div>
+
+<script>
+    // Listen for kategoriListChanged and run closeModal
+    document.body.addEventListener('kategoriListChanged', function() {
+        closeModal();
+    });
+</script>
+{% endblock %}

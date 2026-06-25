@@ -1,0 +1,534 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Lookatstore.id Inventory{% endblock %}</title>
+    
+    <script>
+        if (localStorage.getItem('sidebar-collapsed') === 'true') {
+            document.documentElement.classList.add('desktop-collapsed');
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;500;600;700&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
+                            800: '#9f1239',
+                            900: '#881337',
+                            950: '#4c0519',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Nunito Sans', 'sans-serif'],
+                        display: ['Rubik', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        .font-display { font-family: 'Rubik', sans-serif; }
+        .font-sans { font-family: 'Nunito Sans', sans-serif; }
+        
+        /* Custom scrollbar for data density */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        
+        /* Smooth transition for hover effects */
+        .hover-lift {
+            transition: all 0.2s ease-in-out;
+        }
+        .hover-lift:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Print layout optimizations */
+        @media print {
+            .no-print { display: none !important; }
+            .print-content { width: 100% !important; margin: 0 !important; padding: 0 !important; }
+        }
+        
+        /* Sidebar transition styles */
+        #desktop-sidebar {
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .sidebar-text,
+        .sidebar-logo-text,
+        .sidebar-profile-text,
+        .sidebar-category-header {
+            transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Desktop Collapsed state */
+        .desktop-collapsed #desktop-sidebar {
+            width: 5rem !important; /* w-20 */
+        }
+        .desktop-collapsed .sidebar-text,
+        .desktop-collapsed .sidebar-logo-text,
+        .desktop-collapsed .sidebar-profile-text,
+        .desktop-collapsed .sidebar-category-header {
+            opacity: 0;
+            visibility: hidden;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        .desktop-collapsed #desktop-sidebar nav a {
+            justify-content: center;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+        .desktop-collapsed #desktop-sidebar nav a i {
+            margin-right: 0 !important;
+        }
+        .desktop-collapsed .sidebar-logo-container {
+            justify-content: center;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+        .desktop-collapsed .sidebar-logo-container a {
+            gap: 0 !important;
+        }
+        .desktop-collapsed .sidebar-logo-container a > * + * {
+            margin-left: 0 !important;
+        }
+        .desktop-collapsed .sidebar-profile-container {
+            justify-content: center;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+        .desktop-collapsed .sidebar-profile-logout {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="h-full text-slate-800 font-sans" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+    
+    <!-- Main App Container -->
+    <div class="flex h-screen overflow-hidden">
+        
+        <!-- Sidebar Navigation (Desktop) -->
+        <aside id="desktop-sidebar" class="no-print hidden md:flex md:flex-shrink-0 flex-col w-64 bg-white border-r border-slate-100">
+            <!-- Brand Logo -->
+            <div class="sidebar-logo-container flex items-center justify-between h-16 px-6 border-b border-slate-100 bg-brand-50/30">
+                <a href="{% url 'dashboard' %}" class="flex items-center justify-center">
+                    <img src="{% static 'images/logo.jpg' %}" alt="Lookatstore.id" class="h-9 w-auto shrink-0">
+                </a>
+            </div>
+            
+            <!-- Navigation Links -->
+            <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
+                <a href="{% url 'dashboard' %}" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-colors {% if request.resolver_match.url_name == 'dashboard' %}bg-brand-50 text-brand-600{% else %}text-slate-600 hover:bg-slate-50 hover:text-slate-900{% endif %}" title="Dashboard">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3 shrink-0"></i>
+                    <span class="sidebar-text">Dashboard</span>
+                </a>
+                
+                <div class="sidebar-category-header pt-4 pb-2">
+                    <span class="px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Persediaan</span>
+                </div>
+                
+                <a href="{% url 'inventory:barang_list' %}" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-colors {% if 'barang' in request.path and 'kategori' not in request.path and 'supplier' not in request.path %}bg-brand-50 text-brand-600{% else %}text-slate-600 hover:bg-slate-50 hover:text-slate-900{% endif %}" title="Data Barang">
+                    <i data-lucide="package" class="w-5 h-5 mr-3 shrink-0"></i>
+                    <span class="sidebar-text">Data Barang</span>
+                </a>
+
+                <a href="{% url 'inventory:kategori_list' %}" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-colors {% if 'kategori' in request.path %}bg-brand-50 text-brand-600{% else %}text-slate-600 hover:bg-slate-50 hover:text-slate-900{% endif %}" title="Master Kategori">
+                    <i data-lucide="tag" class="w-5 h-5 mr-3 text-brand-550 shrink-0"></i>
+                    <span class="sidebar-text">Master Kategori</span>
+                </a>
+
+                <a href="{% url 'inventory:supplier_list' %}" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-colors {% if 'supplier' in request.path %}bg-brand-50 text-brand-600{% else %}text-slate-600 hover:bg-slate-50 hover:text-slate-900{% endif %}" title="Master Supplier">
+                    <i data-lucide="truck" class="w-5 h-5 mr-3 text-amber-500 shrink-0"></i>
+                    <span class="sidebar-text">Master Supplier</span>
+                </a>
+                
+                <div class="sidebar-category-header pt-4 pb-2">
+                    <span class="px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Transaksi</span>
+                </div>
+                
+                <a href="{% url 'transactions:masuk_list' %}" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-colors {% if 'masuk' in request.path %}bg-brand-50 text-brand-600{% else %}text-slate-600 hover:bg-slate-50 hover:text-slate-900{% endif %}" title="Barang Masuk">
+                    <i data-lucide="trending-up" class="w-5 h-5 mr-3 text-emerald-500 shrink-0"></i>
+                    <span class="sidebar-text">Barang Masuk</span>
+                </a>
+                
+                <a href="{% url 'transactions:keluar_list' %}" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-colors {% if 'keluar' in request.path %}bg-brand-50 text-brand-600{% else %}text-slate-600 hover:bg-slate-50 hover:text-slate-900{% endif %}" title="Barang Keluar">
+                    <i data-lucide="trending-down" class="w-5 h-5 mr-3 text-rose-500 shrink-0"></i>
+                    <span class="sidebar-text">Barang Keluar</span>
+                </a>
+
+                <a href="{% url 'transactions:ledger_list' %}" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-colors {% if 'ledger' in request.path %}bg-brand-50 text-brand-600{% else %}text-slate-600 hover:bg-slate-50 hover:text-slate-900{% endif %}" title="Log Ledger">
+                    <i data-lucide="clipboard-list" class="w-5 h-5 mr-3 text-brand-600 shrink-0"></i>
+                    <span class="sidebar-text">Log Ledger</span>
+                </a>
+                
+                <div class="sidebar-category-header pt-4 pb-2">
+                    <span class="px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Laporan</span>
+                </div>
+                
+                <a href="{% url 'reports:laporan_masuk' %}" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-colors {% if 'laporan/masuk' in request.path %}bg-brand-50 text-brand-600{% else %}text-slate-600 hover:bg-slate-50 hover:text-slate-900{% endif %}" title="Laporan Masuk">
+                    <i data-lucide="file-spreadsheet" class="w-5 h-5 mr-3 text-emerald-500 shrink-0"></i>
+                    <span class="sidebar-text">Laporan Masuk</span>
+                </a>
+                
+                <a href="{% url 'reports:laporan_keluar' %}" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-colors {% if 'laporan/keluar' in request.path %}bg-brand-50 text-brand-600{% else %}text-slate-600 hover:bg-slate-50 hover:text-slate-900{% endif %}" title="Laporan Keluar">
+                    <i data-lucide="file-spreadsheet" class="w-5 h-5 mr-3 text-rose-500 shrink-0"></i>
+                    <span class="sidebar-text">Laporan Keluar</span>
+                </a>
+            </nav>
+            
+            <!-- User Profile & Logout -->
+            <div class="sidebar-profile-container p-4 border-t border-slate-100 bg-slate-50/50">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center min-w-0">
+                        <div class="w-9 h-9 rounded-full bg-brand-100 flex items-center justify-center text-brand-700 font-bold shrink-0">
+                            {{ request.user.username|make_list|first|upper }}
+                        </div>
+                        <div class="sidebar-profile-text ml-3 truncate">
+                            <p class="text-sm font-semibold text-slate-900 truncate">{{ request.user.username }}</p>
+                            <p class="text-xs text-slate-500 truncate">Administrator</p>
+                        </div>
+                    </div>
+                    <!-- Form Logout -->
+                    <form action="{% url 'accounts:logout' %}" method="post" class="sidebar-profile-logout inline">
+                        {% csrf_token %}
+                        <button type="submit" class="p-2 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition-colors cursor-pointer" title="Keluar">
+                            <i data-lucide="log-out" class="w-5 h-5"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Mobile Sidebar & Header Layout -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header (Mobile Navigation Toggle + Info) -->
+            <header class="no-print flex items-center justify-between h-16 px-6 bg-white border-b border-slate-100 md:flex-shrink-0">
+                <div class="flex items-center">
+                    <button id="mobile-menu-toggle" class="md:hidden p-2 -ml-2 text-slate-600 rounded-lg hover:bg-slate-50 cursor-pointer">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                    <!-- Desktop Sidebar Toggle -->
+                    <button id="desktop-sidebar-toggle" class="hidden md:block p-2 -ml-2 text-slate-600 rounded-lg hover:bg-slate-100 hover:bg-slate-150 transition-all duration-200 cursor-pointer mr-4" title="Perkecil/Perbesar Menu">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                    <h1 class="ml-2 md:ml-0 font-display font-semibold text-xl text-slate-950">
+                        {% block header_title %}Lookatstore.id Mempawah{% endblock %}
+                    </h1>
+                </div>
+                
+                <!-- Right Header Actions -->
+                <div class="flex items-center space-x-4">
+                    <div class="hidden sm:flex flex-col items-end">
+                        <span id="current-time" class="text-sm font-medium text-slate-950"></span>
+                        <span id="current-date" class="text-xs text-slate-500"></span>
+                    </div>
+                    <div class="md:hidden flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center text-brand-700 font-bold">
+                            {{ request.user.username|make_list|first|upper }}
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Mobile Menu Overlay -->
+            <div id="mobile-menu-overlay" class="no-print fixed inset-0 z-40 bg-slate-950/40 backdrop-blur-sm hidden">
+                <aside id="mobile-sidebar" class="flex flex-col w-64 h-full bg-white border-r border-slate-100 transition-transform duration-300 transform -translate-x-full">
+                    <!-- Brand -->
+                    <div class="flex items-center justify-between h-16 px-6 border-b border-slate-100 bg-brand-50/30">
+                    <a href="{% url 'dashboard' %}" class="flex items-center justify-center">
+                        <img src="{% static 'images/logo.jpg' %}" alt="Lookatstore.id" class="h-9 w-auto">
+                    </a>
+                        <button id="mobile-menu-close" class="p-2 text-slate-600 rounded-lg hover:bg-slate-50 cursor-pointer">
+                            <i data-lucide="x" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                    <!-- Menu -->
+                    <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
+                        <a href="{% url 'dashboard' %}" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl {% if request.resolver_match.url_name == 'dashboard' %}bg-brand-50 text-brand-600{% else %}text-slate-600 hover:bg-slate-50 hover:text-slate-900{% endif %}">
+                            <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>
+                            Dashboard
+                        </a>
+                        
+                        <div class="pt-4 pb-2">
+                            <span class="px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Persediaan</span>
+                        </div>
+                        
+                        <a href="{% url 'inventory:barang_list' %}" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl {% if 'barang' in request.path and 'kategori' not in request.path and 'supplier' not in request.path %}bg-brand-50 text-brand-600{% else %}text-slate-600 hover:bg-slate-50 hover:text-slate-900{% endif %}">
+                            <i data-lucide="package" class="w-5 h-5 mr-3"></i>
+                            Data Barang
+                        </a>
+
+                        <a href="{% url 'inventory:kategori_list' %}" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl {% if 'kategori' in request.path %}bg-brand-50 text-brand-600{% else %}text-slate-600 hover:bg-slate-50 hover:text-slate-900{% endif %}">
+                            <i data-lucide="tag" class="w-5 h-5 mr-3 text-brand-550"></i>
+                            Master Kategori
+                        </a>
+
+                        <a href="{% url 'inventory:supplier_list' %}" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl {% if 'supplier' in request.path %}bg-brand-50 text-brand-600{% else %}text-slate-600 hover:bg-slate-50 hover:text-slate-900{% endif %}">
+                            <i data-lucide="truck" class="w-5 h-5 mr-3 text-amber-500"></i>
+                            Master Supplier
+                        </a>
+                        
+                        <div class="pt-4 pb-2">
+                            <span class="px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Transaksi</span>
+                        </div>
+                        
+                        <a href="{% url 'transactions:masuk_list' %}" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl {% if 'masuk' in request.path %}bg-brand-50 text-brand-600{% else %}text-slate-600 hover:bg-slate-50 hover:text-slate-900{% endif %}">
+                            <i data-lucide="trending-up" class="w-5 h-5 mr-3 text-emerald-500"></i>
+                            Barang Masuk
+                        </a>
+                        
+                        <a href="{% url 'transactions:keluar_list' %}" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl {% if 'keluar' in request.path %}bg-brand-50 text-brand-600{% else %}text-slate-600 hover:bg-slate-50 hover:text-slate-900{% endif %}">
+                            <i data-lucide="trending-down" class="w-5 h-5 mr-3 text-rose-500"></i>
+                            Barang Keluar
+                        </a>
+
+                        <a href="{% url 'transactions:ledger_list' %}" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl {% if 'ledger' in request.path %}bg-brand-50 text-brand-600{% else %}text-slate-600 hover:bg-slate-50 hover:text-slate-900{% endif %}">
+                            <i data-lucide="clipboard-list" class="w-5 h-5 mr-3 text-brand-600"></i>
+                            Log Ledger
+                        </a>
+                        
+                        <div class="pt-4 pb-2">
+                            <span class="px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Laporan</span>
+                        </div>
+                        
+                        <a href="{% url 'reports:laporan_masuk' %}" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl {% if 'laporan/masuk' in request.path %}bg-brand-50 text-brand-600{% else %}text-slate-600 hover:bg-slate-50 hover:text-slate-900{% endif %}">
+                            <i data-lucide="file-spreadsheet" class="w-5 h-5 mr-3 text-emerald-500"></i>
+                            Laporan Masuk
+                        </a>
+                        
+                        <a href="{% url 'reports:laporan_keluar' %}" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl {% if 'laporan/keluar' in request.path %}bg-brand-50 text-brand-600{% else %}text-slate-600 hover:bg-slate-50 hover:text-slate-900{% endif %}">
+                            <i data-lucide="file-spreadsheet" class="w-5 h-5 mr-3 text-rose-500"></i>
+                            Laporan Keluar
+                        </a>
+                    </nav>
+                    
+                    <div class="p-4 border-t border-slate-100 bg-slate-50">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center text-brand-700 font-bold">
+                                    {{ request.user.username|make_list|first|upper }}
+                                </div>
+                                <span class="ml-2.5 text-sm font-semibold text-slate-900 truncate">{{ request.user.username }}</span>
+                            </div>
+                            <form action="{% url 'accounts:logout' %}" method="post" class="inline">
+                                {% csrf_token %}
+                                <button type="submit" class="p-2 text-slate-400 hover:text-rose-600 rounded-lg cursor-pointer">
+                                    <i data-lucide="log-out" class="w-5 h-5"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+            
+            <!-- Main Content Area -->
+            <main class="flex-1 overflow-y-auto bg-slate-50 p-6 print-content">
+                {% block content %}{% endblock %}
+            </main>
+        </div>
+    </div>
+    
+    <!-- Modal Container for HTMX Modal Popups -->
+    <div id="modal-container" class="relative z-50"></div>
+    
+    <!-- Toast Container -->
+    <div id="toast-container" class="fixed top-5 right-5 z-[100] flex flex-col gap-3 max-w-sm w-full pointer-events-none px-4 sm:px-0"></div>
+    
+    <!-- JS Logic -->
+    <script>
+        // Init Lucide Icons
+        lucide.createIcons();
+        
+        // Refresh icons after HTMX swaps
+        document.body.addEventListener('htmx:afterOnLoad', function(evt) {
+            lucide.createIcons();
+        });
+        
+        // Clock top bar
+        function updateClock() {
+            const now = new Date();
+            const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            
+            document.getElementById('current-time').textContent = now.toLocaleTimeString('id-ID', timeOptions);
+            document.getElementById('current-date').textContent = now.toLocaleDateString('id-ID', dateOptions);
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+        
+        // Desktop sidebar toggle controls
+        const desktopToggle = document.getElementById('desktop-sidebar-toggle');
+        if (desktopToggle) {
+            desktopToggle.addEventListener('click', function() {
+                document.documentElement.classList.toggle('desktop-collapsed');
+                const isCollapsed = document.documentElement.classList.contains('desktop-collapsed');
+                localStorage.setItem('sidebar-collapsed', isCollapsed ? 'true' : 'false');
+            });
+        }
+
+        // Mobile menu controls
+        const mobileToggle = document.getElementById('mobile-menu-toggle');
+        const mobileOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileSidebar = document.getElementById('mobile-sidebar');
+        const mobileClose = document.getElementById('mobile-menu-close');
+        
+        function openMenu() {
+            mobileOverlay.classList.remove('hidden');
+            setTimeout(() => {
+                mobileSidebar.classList.remove('-translate-x-full');
+            }, 50);
+        }
+        
+        function closeMenu() {
+            mobileSidebar.classList.add('-translate-x-full');
+            setTimeout(() => {
+                mobileOverlay.classList.add('hidden');
+            }, 300);
+        }
+        
+        mobileToggle.addEventListener('click', openMenu);
+        mobileClose.addEventListener('click', closeMenu);
+        mobileOverlay.addEventListener('click', function(e) {
+            if (e.target === mobileOverlay) closeMenu();
+        });
+        
+        // Function to close modal programmatically
+        function closeModal() {
+            const modalEl = document.getElementById('modal');
+            if (modalEl) {
+                modalEl.classList.add('opacity-0');
+                const inner = modalEl.querySelector('.modal-card');
+                if (inner) inner.classList.add('scale-95');
+                setTimeout(() => {
+                    document.getElementById('modal-container').innerHTML = '';
+                }, 200);
+            }
+        }
+
+        // Toast Notification System
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+
+            // Toast element wrapper
+            const toast = document.createElement('div');
+            // Starts off-screen (translate-x-full) and transparent (opacity-0)
+            toast.className = 'flex items-start w-full bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-100 p-4 transition-all duration-300 transform translate-x-full opacity-0 pointer-events-auto';
+            
+            // Set styles based on type
+            let iconColor = 'text-emerald-500 bg-emerald-50 border-emerald-100/50';
+            let iconName = 'check-circle-2';
+            let typeLabel = 'Berhasil';
+            
+            if (type === 'error') {
+                iconColor = 'text-rose-500 bg-rose-50 border-rose-100/50';
+                iconName = 'alert-triangle';
+                typeLabel = 'Error';
+            } else if (type === 'info') {
+                iconColor = 'text-blue-500 bg-blue-50 border-blue-100/50';
+                iconName = 'info';
+                typeLabel = 'Info';
+            } else if (type === 'warning') {
+                iconColor = 'text-amber-500 bg-amber-50 border-amber-100/50';
+                iconName = 'alert-circle';
+                typeLabel = 'Peringatan';
+            }
+
+            toast.innerHTML = `
+                <div class="inline-flex items-center justify-center flex-shrink-0 w-9 h-9 ${iconColor} rounded-xl border">
+                    <i data-lucide="${iconName}" class="w-5 h-5"></i>
+                </div>
+                <div class="ms-3 flex-1 pt-0.5">
+                    <p class="text-sm font-semibold text-slate-900">${typeLabel}</p>
+                    <p class="text-xs text-slate-500 mt-0.5">${message}</p>
+                </div>
+                <button type="button" class="ms-3 bg-transparent text-slate-400 hover:text-slate-900 rounded-lg p-1 hover:bg-slate-100 inline-flex items-center justify-center h-6 w-6 cursor-pointer transition-colors" aria-label="Close">
+                    <span class="sr-only">Close</span>
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            `;
+
+            // Append toast to container
+            container.appendChild(toast);
+            
+            // Initialize Lucide icons on the new element
+            if (window.lucide) {
+                window.lucide.createIcons({
+                    nodeList: toast.querySelectorAll('[data-lucide]')
+                });
+            }
+
+            // Trigger enter animation after a short delay
+            setTimeout(() => {
+                toast.classList.remove('translate-x-full', 'opacity-0');
+            }, 50);
+
+            // Auto dismiss function
+            const dismiss = () => {
+                toast.classList.add('translate-x-full', 'opacity-0');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            };
+
+            // Set auto-dismiss timer (4 seconds)
+            let dismissTimer = setTimeout(dismiss, 4000);
+
+            // Manual close button listener
+            toast.querySelector('button').addEventListener('click', () => {
+                clearTimeout(dismissTimer);
+                dismiss();
+            });
+        }
+
+        // Register custom event listener for HTMX
+        document.body.addEventListener('showToast', function(evt) {
+            const { message, type } = evt.detail;
+            showToast(message, type);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block title %}Log Ledger Stok - Lookatstore.id Inventory{% endblock %}
+{% block header_title %}Riwayat Perubahan Stok (Stock Ledger){% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- Action and Filter Bar -->
+    <div class="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm no-print">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            
+            <!-- Filters Form -->
+            <form class="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-4" hx-get="{% url 'transactions:ledger_list' %}" hx-target="#ledger-table" hx-select="#ledger-table" hx-trigger="submit">
+                <!-- Search Text -->
+                <div class="relative sm:col-span-2">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                        <i data-lucide="search" class="w-4 h-4"></i>
+                    </span>
+                    <input type="text" name="q" value="{{ query }}"
+                           hx-get="{% url 'transactions:ledger_list' %}"
+                           hx-trigger="keyup changed delay:300ms, search"
+                           hx-target="#ledger-table"
+                           hx-select="#ledger-table"
+                           class="block w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-brand-500 focus:ring-4 focus:ring-brand-100 transition-all text-sm"
+                           placeholder="Cari produk atau keterangan log...">
+                </div>
+            </form>
+            
+            <!-- Actions -->
+            <div class="flex-shrink-0 flex space-x-2">
+                <button onclick="window.print()" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm rounded-xl transition-all cursor-pointer flex items-center">
+                    <i data-lucide="printer" class="w-4 h-4 mr-2"></i>
+                    Cetak Log
+                </button>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Live Data Table Card -->
+    <div class="bg-white border border-slate-100 rounded-3xl shadow-sm overflow-hidden" id="ledger-table">
+        <table class="w-full text-left text-sm">
+            <thead class="text-xs text-slate-400 uppercase bg-slate-50 border-b border-slate-150">
+                <tr>
+                    <th class="px-6 py-4">Waktu</th>
+                    <th class="px-6 py-4">Barang</th>
+                    <th class="px-6 py-4 text-center">Stok Awal</th>
+                    <th class="px-6 py-4 text-center">Perubahan</th>
+                    <th class="px-6 py-4 text-center">Stok Akhir</th>
+                    <th class="px-6 py-4 text-center">Tipe Aksi</th>
+                    <th class="px-6 py-4">Petugas</th>
+                    <th class="px-6 py-4">Keterangan</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+                {% for log in items %}
+                <tr class="hover:bg-slate-50/50 transition-colors">
+                    <td class="px-6 py-4 whitespace-nowrap text-slate-600 font-mono text-xs">
+                        {{ log.tanggal|date:"d M Y H:i" }}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div>
+                            <span class="font-semibold text-slate-900">{{ log.barang.nama_produk }}</span>
+                            <p class="text-xs text-slate-400 font-mono mt-0.5">{{ log.barang.kode_barang }}</p>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 text-center font-medium text-slate-500">
+                        {{ log.stok_awal }}
+                    </td>
+                    <td class="px-6 py-4 text-center whitespace-nowrap font-bold">
+                        {% if log.perubahan > 0 %}
+                            <span class="text-emerald-650 bg-emerald-50 px-2 py-0.5 rounded text-xs font-semibold">
+                                +{{ log.perubahan }}
+                            </span>
+                        {% elif log.perubahan < 0 %}
+                            <span class="text-rose-650 bg-rose-50 px-2 py-0.5 rounded text-xs font-semibold">
+                                {{ log.perubahan }}
+                            </span>
+                        {% else %}
+                            <span class="text-slate-500 bg-slate-50 px-2 py-0.5 rounded text-xs font-semibold">
+                                0
+                            </span>
+                        {% endif %}
+                    </td>
+                    <td class="px-6 py-4 text-center font-bold text-slate-800">
+                        {{ log.stok_akhir }}
+                    </td>
+                    <td class="px-6 py-4 text-center whitespace-nowrap">
+                        {% if log.tipe_transaksi == 'MASUK' %}
+                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-emerald-100 text-emerald-800">
+                                <i data-lucide="arrow-down-left" class="w-3 h-3 mr-1"></i>
+                                Masuk
+                            </span>
+                        {% elif log.tipe_transaksi == 'KELUAR' %}
+                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-rose-100 text-rose-800">
+                                <i data-lucide="arrow-up-right" class="w-3 h-3 mr-1"></i>
+                                Keluar
+                            </span>
+                        {% elif log.tipe_transaksi == 'KOREKSI' %}
+                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-amber-100 text-amber-800">
+                                <i data-lucide="refresh-cw" class="w-3 h-3 mr-1"></i>
+                                Koreksi
+                            </span>
+                        {% elif log.tipe_transaksi == 'HAPUS_MASUK' %}
+                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-slate-200 text-slate-800">
+                                <i data-lucide="trash-2" class="w-3 h-3 mr-1"></i>
+                                Hapus Masuk
+                            </span>
+                        {% elif log.tipe_transaksi == 'HAPUS_KELUAR' %}
+                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-slate-200 text-slate-800">
+                                <i data-lucide="trash-2" class="w-3 h-3 mr-1"></i>
+                                Hapus Keluar
+                            </span>
+                        {% endif %}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-slate-600 font-medium">
+                        {{ log.user.username|default:"System" }}
+                    </td>
+                    <td class="px-6 py-4 text-slate-500 text-xs max-w-sm whitespace-normal break-words">
+                        {{ log.keterangan }}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8" class="px-6 py-12 text-center text-slate-400">
+                        <div class="flex flex-col items-center justify-center">
+                            <i data-lucide="list-todo" class="w-12 h-12 text-slate-300 mb-3"></i>
+                            <p class="text-base font-semibold text-slate-600">Tidak ada riwayat perubahan stok</p>
+                            <p class="text-xs">Log audit akan otomatis tercatat setiap ada aktivitas transaksi.</p>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <script>
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        </script>
+    </div>
+</div>
+{% endblock %}

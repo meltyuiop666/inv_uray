@@ -1,0 +1,272 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Lookatstore.id Inventory{% endblock %}
+{% block header_title %}Ringkasan Persediaan{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- Stat Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Total Barang Card -->
+        <div class="bg-white border border-slate-100 rounded-3xl p-6 hover-lift shadow-sm">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-semibold text-slate-500 uppercase tracking-wider">Total Item Barang</p>
+                    <h3 class="mt-2 text-3xl font-display font-bold text-slate-900">{{ total_items }}</h3>
+                </div>
+                <div class="p-3 bg-brand-50 text-brand-600 rounded-2xl">
+                    <i data-lucide="package" class="w-6 h-6"></i>
+                </div>
+            </div>
+            <div class="mt-4 flex items-center text-xs text-slate-500">
+                <i data-lucide="info" class="w-4 h-4 mr-1"></i>
+                <span>Jumlah varian produk terdaftar</span>
+            </div>
+        </div>
+
+        <!-- Barang Masuk Hari Ini Card -->
+        <div class="bg-white border border-slate-100 rounded-3xl p-6 hover-lift shadow-sm">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-semibold text-slate-500 uppercase tracking-wider">Barang Masuk (Hari Ini)</p>
+                    <h3 class="mt-2 text-3xl font-display font-bold text-slate-900">{{ masuk_today }}</h3>
+                </div>
+                <div class="p-3 bg-emerald-50 text-emerald-600 rounded-2xl">
+                    <i data-lucide="trending-up" class="w-6 h-6"></i>
+                </div>
+            </div>
+            <div class="mt-4 flex items-center text-xs text-slate-500">
+                <i data-lucide="calendar" class="w-4 h-4 mr-1"></i>
+                <span>Penerimaan masuk hari ini</span>
+            </div>
+        </div>
+
+        <!-- Barang Keluar Hari Ini Card -->
+        <div class="bg-white border border-slate-100 rounded-3xl p-6 hover-lift shadow-sm">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-semibold text-slate-500 uppercase tracking-wider">Barang Keluar (Hari Ini)</p>
+                    <h3 class="mt-2 text-3xl font-display font-bold text-slate-900">{{ keluar_today }}</h3>
+                </div>
+                <div class="p-3 bg-rose-50 text-rose-600 rounded-2xl">
+                    <i data-lucide="trending-down" class="w-6 h-6"></i>
+                </div>
+            </div>
+            <div class="mt-4 flex items-center text-xs text-slate-500">
+                <i data-lucide="shopping-bag" class="w-4 h-4 mr-1"></i>
+                <span>Pengeluaran keluar hari ini</span>
+            </div>
+        </div>
+
+        <!-- Stok Kritis Card -->
+        <div class="bg-white border border-slate-100 rounded-3xl p-6 hover-lift shadow-sm">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-semibold text-slate-500 uppercase tracking-wider">Stok Kritis</p>
+                    <h3 class="mt-2 text-3xl font-display font-bold text-rose-600">{{ critical_count }}</h3>
+                </div>
+                <div class="p-3 {% if critical_count > 0 %}bg-rose-50 text-rose-600 animate-pulse{% else %}bg-slate-50 text-slate-400{% endif %} rounded-2xl">
+                    <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+                </div>
+            </div>
+            <div class="mt-4 flex items-center text-xs text-slate-500">
+                <i data-lucide="shield-alert" class="w-4 h-4 mr-1"></i>
+                <span>Stok di bawah batas minimum</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Chart Trend Section -->
+    <div class="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm">
+        <div class="flex items-center justify-between mb-4">
+            <h4 class="font-display font-semibold text-slate-900 flex items-center">
+                <i data-lucide="line-chart" class="w-5 h-5 text-brand-600 mr-2"></i>
+                Tren Posisi Stok 30 Hari Terakhir per Kategori
+            </h4>
+            <span class="text-xs text-slate-400">Diperbarui secara real-time</span>
+        </div>
+        <div class="h-80 relative">
+            <canvas id="stockTrendChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Main Grid Content -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Low Stock Alerts Table (Left/Center) -->
+        <div class="lg:col-span-2 bg-white border border-slate-100 rounded-3xl shadow-sm overflow-hidden flex flex-col">
+            <div class="p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="alert-circle" class="w-5 h-5 text-rose-500"></i>
+                    <h4 class="font-display font-semibold text-slate-900">Peringatan Stok Kritis</h4>
+                </div>
+                <a href="{% url 'inventory:barang_list' %}?stok_alert=critical" class="text-xs font-semibold text-brand-600 hover:text-brand-700">Lihat Semua</a>
+            </div>
+            
+            <div class="flex-1 overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead class="text-xs text-slate-400 uppercase bg-slate-50/40 border-b border-slate-100">
+                        <tr>
+                            <th class="px-6 py-4">Kode</th>
+                            <th class="px-6 py-4">Nama Produk</th>
+                            <th class="px-6 py-4">Kategori</th>
+                            <th class="px-6 py-4 text-center">Stok</th>
+                            <th class="px-6 py-4 text-center">Min. Stok</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        {% for barang in critical_items %}
+                        <tr class="hover:bg-rose-50/30 transition-colors">
+                            <td class="px-6 py-4 font-mono font-medium text-slate-600">{{ barang.kode_barang }}</td>
+                            <td class="px-6 py-4 font-semibold text-slate-900">{{ barang.nama_produk }}</td>
+                            <td class="px-6 py-4">
+                                <span class="px-2.5 py-1 text-xs rounded-full bg-slate-100 text-slate-600 font-medium">
+                                    {{ barang.kategori.nama|default:"-" }}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2.5 py-1 text-xs rounded-full bg-rose-50 text-rose-600 font-bold">
+                                    {{ barang.stok }} {{ barang.satuan }}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-center text-slate-500 font-medium">{{ barang.stok_minimum }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5" class="px-6 py-12 text-center text-slate-400">
+                                <div class="flex flex-col items-center justify-center">
+                                    <i data-lucide="check-circle" class="w-8 h-8 text-emerald-500 mb-2"></i>
+                                    <p class="text-sm font-semibold">Semua stok aman!</p>
+                                    <p class="text-xs">Tidak ada barang yang memiliki stok di bawah batas minimum.</p>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Recent Activities Timeline (Right) -->
+        <div class="bg-white border border-slate-100 rounded-3xl shadow-sm p-6 flex flex-col">
+            <h4 class="font-display font-semibold text-slate-900 mb-6 flex items-center">
+                <i data-lucide="activity" class="w-5 h-5 text-brand-600 mr-2"></i>
+                Aktivitas Terkini
+            </h4>
+            
+            <div class="flex-1 flow-root">
+                <ul class="-mb-8">
+                    {% for act in activities %}
+                    <li>
+                        <div class="relative pb-8">
+                            {% if not forloop.last %}
+                            <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-slate-150" aria-hidden="true"></span>
+                            {% endif %}
+                            <div class="relative flex space-x-3">
+                                <div>
+                                    <span class="h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white {% if act.type == 'masuk' %}bg-emerald-50 text-emerald-600{% else %}bg-rose-50 text-rose-600{% endif %}">
+                                        <i data-lucide="{% if act.type == 'masuk' %}trending-up{% else %}trending-down{% endif %}" class="w-4 h-4"></i>
+                                    </span>
+                                </div>
+                                <div class="flex-1 min-w-0 pt-1.5">
+                                    <div class="text-sm text-slate-800">
+                                        <span class="font-semibold text-slate-900">{{ act.barang }}</span>
+                                        <span class="text-xs text-slate-500 font-mono">({{ act.kode }})</span>
+                                        <span class="font-medium {% if act.type == 'masuk' %}text-emerald-600{% else %}text-rose-600{% endif %}">
+                                            {% if act.type == 'masuk' %}+{% else %}-{% endif %}{{ act.jumlah }}
+                                        </span>
+                                    </div>
+                                    <p class="text-xs text-slate-400 mt-0.5">{{ act.keterangan }}</p>
+                                    <div class="text-right text-xs whitespace-nowrap text-slate-400 mt-1">
+                                        <time datetime="{{ act.created_at|date:'c' }}">{{ act.tanggal|date:"d M Y" }}</time>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% empty %}
+                    <li class="py-12 text-center text-slate-400">
+                        <i data-lucide="clock" class="w-8 h-8 text-slate-300 mx-auto mb-2"></i>
+                        <p class="text-sm font-semibold">Belum ada aktivitas</p>
+                        <p class="text-xs">Catatan transaksi masuk/keluar akan tampil di sini.</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const chartData = JSON.parse('{{ chart_json|safe }}');
+        const ctx = document.getElementById('stockTrendChart').getContext('2d');
+        
+        new Chart(ctx, {
+            type: 'line',
+            data: chartData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            font: {
+                                family: 'Nunito Sans',
+                                size: 12
+                            },
+                            usePointStyle: true,
+                            boxWidth: 8
+                        }
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        backgroundColor: '#1e293b',
+                        titleFont: {
+                            family: 'Rubik',
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            family: 'Nunito Sans'
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: {
+                                family: 'Nunito Sans',
+                                size: 11
+                            },
+                            color: '#64748b'
+                        }
+                    },
+                    y: {
+                        grid: {
+                            color: '#f1f5f9'
+                        },
+                        ticks: {
+                            font: {
+                                family: 'Nunito Sans',
+                                size: 11
+                            },
+                            color: '#64748b',
+                            stepSize: 1
+                        },
+                        min: 0
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

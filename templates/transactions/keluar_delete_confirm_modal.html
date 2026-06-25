@@ -1,0 +1,45 @@
+<div id="modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/40 backdrop-blur-sm transition-opacity duration-200">
+    
+    <!-- Modal Card -->
+    <div class="modal-card bg-white border border-slate-100 shadow-2xl rounded-3xl w-full max-w-md overflow-hidden transform scale-95 transition-transform duration-200">
+        
+        <div class="p-6 text-center">
+            <!-- Alert Icon -->
+            <div class="w-14 h-14 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="alert-triangle" class="w-8 h-8 animate-bounce"></i>
+            </div>
+            
+            <h3 class="font-display font-semibold text-slate-900 text-lg mb-2">Hapus Pengeluaran Barang?</h3>
+            <p class="text-sm text-slate-500 mb-6">
+                Apakah Anda yakin ingin menghapus catatan barang keluar untuk <strong class="text-slate-800">"{{ transaction.barang.nama_produk }}"</strong> sejumlah <strong class="text-rose-600">{{ transaction.jumlah }} pcs</strong>?
+                <br><span class="text-xs text-emerald-600 font-semibold mt-2 block">Peringatan: Stok barang akan bertambah/dikembalikan {{ transaction.jumlah }} pcs setelah dihapus.</span>
+            </p>
+            
+            <!-- Form Action -->
+            <form hx-post="{% url 'transactions:keluar_delete' transaction.pk %}" hx-target="#modal-container" class="flex items-center justify-center space-x-2">
+                {% csrf_token %}
+                <button type="button" onclick="closeModal()" class="px-4 py-2.5 bg-slate-150 hover:bg-slate-200 text-slate-700 font-semibold text-sm rounded-xl transition-all cursor-pointer">
+                    Batal
+                </button>
+                <button type="submit" class="px-5 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-semibold text-sm rounded-xl shadow-md shadow-rose-600/10 hover:shadow-rose-600/20 active:scale-[0.98] transition-all cursor-pointer">
+                    Hapus Transaksi
+                </button>
+            </form>
+        </div>
+        
+    </div>
+</div>
+
+<script>
+    setTimeout(() => {
+        const modal = document.getElementById('modal');
+        const inner = modal.querySelector('.modal-card');
+        modal.classList.add('opacity-100');
+        inner.classList.remove('scale-95');
+        inner.classList.add('scale-100');
+    }, 10);
+    
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+</script>

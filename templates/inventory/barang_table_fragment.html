@@ -1,0 +1,79 @@
+<table class="w-full text-left text-sm">
+    <thead class="text-xs text-slate-400 uppercase bg-slate-50 border-b border-slate-150">
+        <tr>
+            <th class="px-6 py-4">Kode Barang</th>
+            <th class="px-6 py-4">Nama Produk</th>
+            <th class="px-6 py-4">Kategori</th>
+            <th class="px-6 py-4">Satuan</th>
+            <th class="px-6 py-4 text-center">Stok Saat Ini</th>
+            <th class="px-6 py-4 text-center">Stok Minimum</th>
+            <th class="px-6 py-4 text-center no-print">Aksi</th>
+        </tr>
+    </thead>
+    <tbody class="divide-y divide-slate-100">
+        {% for barang in items %}
+        <tr class="hover:bg-slate-50/50 transition-colors {% if barang.stok <= barang.stok_minimum %}bg-rose-50/30{% endif %}">
+            <td class="px-6 py-4 font-mono font-medium text-slate-600">{{ barang.kode_barang }}</td>
+            <td class="px-6 py-4">
+                <div>
+                    <span class="font-semibold text-slate-900">{{ barang.nama_produk }}</span>
+                    {% if barang.deskripsi %}
+                        <p class="text-xs text-slate-400 mt-0.5 max-w-xs truncate">{{ barang.deskripsi }}</p>
+                    {% endif %}
+                </div>
+            </td>
+            <td class="px-6 py-4">
+                <span class="px-2.5 py-1 text-xs rounded-full font-medium {% if barang.kategori.nama == 'Dress' %}bg-rose-50 text-rose-600{% elif barang.kategori.nama == 'Hijab' %}bg-sky-50 text-sky-600{% elif barang.kategori.nama == 'Oneset' %}bg-violet-50 text-violet-600{% else %}bg-slate-100 text-slate-600{% endif %}">
+                    {{ barang.kategori.nama|default:"-" }}
+                </span>
+            </td>
+            <td class="px-6 py-4 font-medium text-slate-500">{{ barang.satuan }}</td>
+            <td class="px-6 py-4 text-center">
+                {% if barang.stok <= barang.stok_minimum %}
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-700 animate-pulse">
+                        <i data-lucide="alert-triangle" class="w-3.5 h-3.5 mr-1"></i>
+                        {{ barang.stok }} (Kritis)
+                    </span>
+                {% else %}
+                    <span class="px-2.5 py-1 text-xs rounded-full font-bold bg-emerald-50 text-emerald-700">
+                        {{ barang.stok }}
+                    </span>
+                {% endif %}
+            </td>
+            <td class="px-6 py-4 text-center text-slate-500 font-medium">{{ barang.stok_minimum }}</td>
+            <td class="px-6 py-4 text-center no-print whitespace-nowrap">
+                <div class="inline-flex items-center space-x-2">
+                    <button hx-get="{% url 'inventory:barang_update' barang.pk %}"
+                            hx-target="#modal-container"
+                            class="p-1.5 text-slate-400 hover:text-brand-600 rounded-lg hover:bg-brand-50 transition-colors cursor-pointer"
+                            title="Ubah">
+                        <i data-lucide="edit" class="w-4 h-4"></i>
+                    </button>
+                    <button hx-get="{% url 'inventory:barang_delete' barang.pk %}"
+                            hx-target="#modal-container"
+                            class="p-1.5 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition-colors cursor-pointer"
+                            title="Hapus">
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="7" class="px-6 py-12 text-center text-slate-400">
+                <div class="flex flex-col items-center justify-center">
+                    <i data-lucide="package-open" class="w-12 h-12 text-slate-300 mb-3"></i>
+                    <p class="text-base font-semibold text-slate-600">Tidak ada barang ditemukan</p>
+                    <p class="text-xs">Coba ubah kriteria pencarian atau tambahkan produk baru.</p>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<script>
+    // Re-initialize Lucide Icons for dynamic content
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+</script>

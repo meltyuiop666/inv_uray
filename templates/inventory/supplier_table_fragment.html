@@ -1,0 +1,60 @@
+<table class="w-full text-left text-sm">
+    <thead class="text-xs text-slate-400 uppercase bg-slate-50 border-b border-slate-150">
+        <tr>
+            <th class="px-6 py-4">Nama Supplier</th>
+            <th class="px-6 py-4">Kontak</th>
+            <th class="px-6 py-4">Email</th>
+            <th class="px-6 py-4">Alamat</th>
+            <th class="px-6 py-4 text-center no-print">Aksi</th>
+        </tr>
+    </thead>
+    <tbody class="divide-y divide-slate-100">
+        {% for supplier in items %}
+        <tr class="hover:bg-slate-50/50 transition-colors">
+            <td class="px-6 py-4">
+                <span class="font-semibold text-slate-900">{{ supplier.nama }}</span>
+            </td>
+            <td class="px-6 py-4 text-slate-600 font-mono text-xs">
+                {{ supplier.kontak|default:"-" }}
+            </td>
+            <td class="px-6 py-4 text-slate-600">
+                {{ supplier.email|default:"-" }}
+            </td>
+            <td class="px-6 py-4 text-slate-500 max-w-xs truncate">
+                {{ supplier.alamat|default:"-" }}
+            </td>
+            <td class="px-6 py-4 text-center no-print whitespace-nowrap">
+                <div class="inline-flex items-center space-x-2">
+                    <button hx-get="{% url 'inventory:supplier_update' supplier.pk %}"
+                            hx-target="#modal-container"
+                            class="p-1.5 text-slate-400 hover:text-brand-600 rounded-lg hover:bg-brand-50 transition-colors cursor-pointer"
+                            title="Ubah">
+                        <i data-lucide="edit" class="w-4 h-4"></i>
+                    </button>
+                    <button hx-get="{% url 'inventory:supplier_delete' supplier.pk %}"
+                            hx-target="#modal-container"
+                            class="p-1.5 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition-colors cursor-pointer"
+                            title="Hapus">
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5" class="px-6 py-12 text-center text-slate-400">
+                <div class="flex flex-col items-center justify-center">
+                    <i data-lucide="truck" class="w-12 h-12 text-slate-300 mb-3"></i>
+                    <p class="text-base font-semibold text-slate-600">Tidak ada supplier ditemukan</p>
+                    <p class="text-xs">Coba ubah kriteria pencarian atau tambahkan supplier baru.</p>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<script>
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+</script>
