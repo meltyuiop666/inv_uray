@@ -47,8 +47,6 @@ services:
       context: .
       dockerfile: Dockerfile.nginx
     restart: unless-stopped
-    ports:
-      - "${NGINX_PORT:-80}:80"
     volumes:
       - static_files:/app/staticfiles:ro
       - media_files:/app/mediafiles:ro
