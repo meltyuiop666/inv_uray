@@ -31,6 +31,9 @@ else:
 echo "==> Running database migrations..."
 python manage.py migrate --noinput
 
+echo "==> Running initial data seed (skip if data exists)..."
+python seed_initial.py
+
 echo "==> Collecting static files..."
 python manage.py collectstatic --noinput --clear
 
